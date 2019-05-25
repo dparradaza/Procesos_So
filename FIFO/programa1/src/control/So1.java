@@ -20,5 +20,4 @@ public class So1 {
         Ventana v = new Ventana();
         v.setVisible(true);
     }
-    
 }

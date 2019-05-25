@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
+import logica.Cola;
 
 /**
  *
@@ -49,31 +50,26 @@ public class Ventana extends JFrame implements ActionListener {
         setResizable(false);
         setUndecorated(true);
         setLocationRelativeTo(null);
-        setVisible(true);
         // Se instancian los metodos de los Paneles xd
-        Panel1();
-        Panel2();
+        PanelIzq();
+        PanelDer();
         Componentes();
         //---------------------
         combo = new JComboBox();
+        combo.addItem("Seleccione una opción");
         combo.addItem("✔ Crear Procesos");
-
         //combo.addItem("✔ Ver reporte");
         //combo.addItem("✔ Pensum");
-        combo.setSelectedIndex(0);
-
         combo.setBounds(getWidth() / 2 + 100, 80, 170, 22);
         combo.setLayout(null);
-        combo.setSelectedIndex(-1);
         combo.setBackground(new Color(24, 100, 167));
         combo.setForeground(new Color(235, 196, 56));
         combo.addActionListener(this);
         panelDerecho.add(combo);
         combo.updateUI();
-
     }
 
-    public void Panel1() {
+    public void PanelIzq() {
         // Creacion del JPanel Izquierda
         panelIzquierdo = new JPanel();
         panelIzquierdo.setBounds(0, 0, getWidth() / 2, getHeight());
@@ -83,7 +79,7 @@ public class Ventana extends JFrame implements ActionListener {
         panelIzquierdo.updateUI();
     }
 
-    public void Panel2() {
+    public void PanelDer() {
         // Creacion del JPanel Derecho
         panelDerecho = new JPanel();
         panelDerecho.setBounds(getWidth() / 2, 0, getWidth(), getHeight());
@@ -203,20 +199,24 @@ public class Ventana extends JFrame implements ActionListener {
         pal2.updateUI();
     }
 
+    Cola proceso;
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == cerrar) {
             System.exit(0);
         }
         if (operar == e.getSource()) {
-            if (!validacion) {
+            String opcion = combo.getSelectedItem().toString();
+            if (opcion.equals("✔ Crear Procesos")) {
+                System.out.println("Creando P");
                 combo.addItem("✔ Iniciar Simulación");
-                validacion = true;
+                proceso = new Cola();
+            }else{
+                caja1.setText("ERROR");
+                System.out.println("Debe escoger una opcion");
             }
         }
-        if (e.getSource() == null) {
-
-        }
+        
     }
 
 }

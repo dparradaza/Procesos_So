@@ -16,7 +16,6 @@ public class Cola {
     }
 
     class Nodo {
-
         Nodo ant, sig;
         public int tiempoLlegada;
         public int tiempoRafaga;
