@@ -11,31 +11,24 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.net.URL;
-import java.util.Arrays;
 import java.util.StringTokenizer;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 /**
  *
  * @author diego
  */
-public class Ventana extends JFrame implements ActionListener{
-    private JTextArea caja1,caja2;
-    private JLabel texto, texto1, autor, pal,pal2, nopal, contarL,contarP, eliminar;
+public class Ventana extends JFrame implements ActionListener {
+
+    private JTextArea caja1, caja2;
+    private JLabel texto, texto1, autor, pal, pal2, nopal, contarL, contarP, eliminar;
     private JButton cerrar, operar;
     private JComboBox combo;
     private JPanel panelIzquierdo, panelDerecho;
@@ -44,11 +37,12 @@ public class Ventana extends JFrame implements ActionListener{
     private Border bordesitosxd, bordes, bordes1, bordes2;
     private StringTokenizer st;
     //-----------------
-    private int contador=0;
+    private int contador = 0;
     private String valor;
     private String valor1 = "";
     private char[] arrayChar;
-    private boolean validacion=false;
+    private boolean validacion = false;
+
     public Ventana() {   // Creacion de la ventana 
         setSize(1100, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -63,11 +57,11 @@ public class Ventana extends JFrame implements ActionListener{
         //---------------------
         combo = new JComboBox();
         combo.addItem("✔ Crear Procesos");
-        
+
         //combo.addItem("✔ Ver reporte");
         //combo.addItem("✔ Pensum");
         combo.setSelectedIndex(0);
-       
+
         combo.setBounds(getWidth() / 2 + 100, 80, 170, 22);
         combo.setLayout(null);
         combo.setSelectedIndex(-1);
@@ -83,7 +77,7 @@ public class Ventana extends JFrame implements ActionListener{
         // Creacion del JPanel Izquierda
         panelIzquierdo = new JPanel();
         panelIzquierdo.setBounds(0, 0, getWidth() / 2, getHeight());
-        panelIzquierdo.setBackground(new Color( 187, 187, 187 ));
+        panelIzquierdo.setBackground(new Color(187, 187, 187));
         panelIzquierdo.setLayout(null);
         this.add(panelIzquierdo);
         panelIzquierdo.updateUI();
@@ -93,7 +87,7 @@ public class Ventana extends JFrame implements ActionListener{
         // Creacion del JPanel Derecho
         panelDerecho = new JPanel();
         panelDerecho.setBounds(getWidth() / 2, 0, getWidth(), getHeight());
-        panelDerecho.setBackground(new Color( 250, 162, 96 ));
+        panelDerecho.setBackground(new Color(250, 162, 96));
         panelDerecho.setLayout(null);
         this.add(panelDerecho);
         panelDerecho.updateUI();
@@ -107,7 +101,7 @@ public class Ventana extends JFrame implements ActionListener{
         //----------------------- 
         texto = new JLabel("      ||SIMULADOR \n\t SERVICIOS ||");
         texto.setFont(fuente);
-        texto.setBounds(getWidth() / 25 -25, getHeight() / 2 - 20, 500, 30);
+        texto.setBounds(getWidth() / 25 - 25, getHeight() / 2 - 20, 500, 30);
         texto.setForeground(new Color(0, 104, 139));
         panelIzquierdo.add(texto);
         //------------------------
@@ -122,8 +116,8 @@ public class Ventana extends JFrame implements ActionListener{
         autor = new JLabel("Diego Parra(20141020063)-Oscar Bautista(20142020)");
         autor.setBounds(new Rectangle(5, 560, 390, 30));
         autor.setFont(fuente1);
-       // autor.setBorder(bordesitosxd);
-        autor.setForeground(new Color(0,104,139));
+        // autor.setBorder(bordesitosxd);
+        autor.setForeground(new Color(0, 104, 139));
         autor.setHorizontalAlignment(JLabel.CENTER);
         panelIzquierdo.add(autor);
         //------------------------
@@ -137,12 +131,12 @@ public class Ventana extends JFrame implements ActionListener{
         //bordes = BorderFactory.createLineBorder(new Color(180, 180, 180), 2, false);
         //bordes1 = BorderFactory.createLineBorder(new Color(32, 50, 72), 2);
         //bordes2 = BorderFactory.createLineBorder(new Color(71, 161, 188), 2);
-        
+
         //Cajas de texto
         JScrollPane scroll = new JScrollPane();
-        
+
         caja1 = new JTextArea();
-       // caja1.setBounds(getWidth() / 2 + 10, 200, 400, 120);
+        // caja1.setBounds(getWidth() / 2 + 10, 200, 400, 120);
         caja1.setBackground(new Color(32, 50, 72));
         caja1.setForeground(new Color(235, 196, 56));
         caja1.setLineWrap(true);
@@ -150,7 +144,7 @@ public class Ventana extends JFrame implements ActionListener{
         scroll.setBounds(getWidth() / 2 + 10, 150, 500, 180);
         panelDerecho.add(scroll);
         caja1.updateUI();
-        
+
         //Caja 2
         JScrollPane scroll2 = new JScrollPane();
         caja2 = new JTextArea();
@@ -163,7 +157,7 @@ public class Ventana extends JFrame implements ActionListener{
         scroll2.setBounds(getWidth() / 2 + 10, 350, 500, 230);
         panelDerecho.add(scroll2);
         caja2.updateUI();
-        
+
         //------------------------
         cerrar = new JButton("X");
         cerrar.setBorder(null);
@@ -187,8 +181,7 @@ public class Ventana extends JFrame implements ActionListener{
         operar.addActionListener(this);
         panelDerecho.add(operar);
         operar.repaint();
-        
-        
+
         pal = new JLabel();
         pal.setBounds(10, 20, 470, 490);
         panelIzquierdo.add(pal);
@@ -201,29 +194,29 @@ public class Ventana extends JFrame implements ActionListener{
         ImageIcon icon2 = new ImageIcon(path2);
         pal.setIcon(icon);
         pal.updateUI();
-        */
+         */
         pal2 = new JLabel();
         pal2.setBounds(getWidth() / 2 + 20, 170, 500, 400);
         panelDerecho.add(pal2);
-        
-       
+
         //pal2.setIcon(icon2);
         pal2.updateUI();
-            }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == cerrar) {
             System.exit(0);
         }
-        if(operar == e.getSource()){
-            if(!validacion){
+        if (operar == e.getSource()) {
+            if (!validacion) {
                 combo.addItem("✔ Iniciar Simulación");
                 validacion = true;
             }
         }
-        if (e.getSource()==null){
-          
-      }
+        if (e.getSource() == null) {
+
+        }
     }
-    
+
 }
