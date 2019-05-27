@@ -1,22 +1,26 @@
 package vista;
 
+import modelo.Lista;
+import modelo.Nodo;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Thread.sleep;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
-import logica.Cola2;
-import logica.Nodo;
 
 /**
  *
@@ -24,7 +28,8 @@ import logica.Nodo;
  */
 public class Ventana extends JFrame implements ActionListener {
 
-    private JTextArea caja1, caja2;
+    private JTextArea caja1;
+    private JTable caja2;
     private JLabel texto, texto1, autor, pal, pal2, nopal, contarL, contarP, eliminar;
     private JButton cerrar, operar;
     private JComboBox combo;
@@ -139,7 +144,7 @@ public class Ventana extends JFrame implements ActionListener {
 
         //Caja 2
         JScrollPane scroll2 = new JScrollPane();
-        caja2 = new JTextArea();
+        caja2 = new JTable();
         //caja2.setBounds(getWidth() / 2 + 10, 400, 400, 120);
         //caja.setBorder(bordes);
         //caja.setCursor(mano);
@@ -194,8 +199,17 @@ public class Ventana extends JFrame implements ActionListener {
         //pal2.setIcon(icon2);
         pal2.updateUI();
     }
-
-    Cola2 proceso;
+    public void graficar(String matriz[][]) {
+        caja2.setModel(new javax.swing.table.DefaultTableModel(
+                matriz,
+                new String[]{
+                    "Iteración", "Proceso", "Servicios"
+                }
+        ));
+        caja2.setRowHeight(30);
+        //jScrollPane1.setViewportView(caja2);
+    }
+    Lista proceso = new Lista();
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -207,31 +221,41 @@ public class Ventana extends JFrame implements ActionListener {
         if (operar == e.getSource()) {
             String opcion = combo.getSelectedItem().toString();
             if (opcion.equals("✔ Crear Procesos")) {
-                System.out.println("Creando P");
+
                 combo.addItem("✔ Iniciar Simulación");
-                proceso = new Cola2();
-                for (int i = 0; i < 10; i++) {
+                // proceso = new Cola2();
+                for (int i = 0; i < (int) (Math.random() * 10) + 3; i++) {
                     numero = (int) (Math.random() * 10) + 1;
-                    proceso.insertar(valor, numero);
+                    proceso.insertar(numero, "" + c);
                     caja1.append("Proceso: " + c + " --- Servicios: " + numero + "\n");
                     c++;
                 }
             } else if (opcion.equals("✔ Iniciar Simulación")) {
-                int n = proceso.getTamano();
-                Nodo servicio = proceso.obtenerDato(1);
-                int obtServ = servicio.getSig().getNumServ();
-                if (obtServ > 3) {
-                    int temp = obtServ - 3;
-                    servicio.setNumServ(temp);
-                    Nodo ultimo = servicio.getSig();
-                    servicio.setSig(ultimo.getSig());
-                    proceso.insertar(ultimo.getNombre(), ultimo.getNumServ());
-                    n = proceso.getTamano();
-                    caja2.append("Proceso: " + c + " --- Servicios: " + numero + "\n");
-                } else {
-                    Nodo ultimo = servicio.getSig();
-                    servicio.setSig(ultimo.getSig());
-                    n = proceso.getTamano();
+                int n = proceso.getTam();
+                String matriz[][] = new String[400][4];
+                Nodo busca = proceso.obtenerDato(1);
+                int i = 0;
+                while (i < n) {
+
+                    matriz[i][0] = Integer.toString(i);
+                   // matriz[i][1] = busca.getId();
+                    matriz[i][1] = busca.getSig().getNombre();
+                    matriz[i][2] = Integer.toString(busca.getSig().getNumeroServicios());
+                    graficar(matriz);
+
+                    if (busca.getSig().getNumeroServicios() > 3) {
+                        int calculo = busca.getSig().getNumeroServicios() - 3;
+                        busca.getSig().setNumeroServicios(calculo);
+                        Nodo ultimo = busca.getSig();
+                        busca.setSig(ultimo.getSig());
+                        proceso.insertar(ultimo.getNumeroServicios(), ultimo.getNombre());
+                        n = proceso.getTam();
+                    } else {
+                        Nodo ultimo = busca.getSig();
+                        busca.setSig(ultimo.getSig());
+                        n = proceso.getTam();
+                    }
+                    i++;
                 }
             } else {
                 caja1.setText("ERROR");

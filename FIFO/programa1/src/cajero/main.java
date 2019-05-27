@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package control;
+package cajero;
 
 import vista.Ventana;
 
@@ -11,12 +11,8 @@ import vista.Ventana;
  *
  * @author diego
  */
-public class So1 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
+public class main {
+       public static void main(String[] args) {
         Ventana v = new Ventana();
         v.setVisible(true);
     }
