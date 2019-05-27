@@ -21,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import logica.Cola;
+import logica.Cola2;
 
 /**
  *
@@ -199,7 +200,8 @@ public class Ventana extends JFrame implements ActionListener {
         pal2.updateUI();
     }
 
-    Cola proceso;
+    Cola2 proceso;
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == cerrar) {
@@ -210,13 +212,24 @@ public class Ventana extends JFrame implements ActionListener {
             if (opcion.equals("✔ Crear Procesos")) {
                 System.out.println("Creando P");
                 combo.addItem("✔ Iniciar Simulación");
-                proceso = new Cola();
-            }else{
+                proceso = new Cola2();
+                char c = (char) 65;
+                for (int i = 0; i < 10; i++) {
+                    int numero = (int) (Math.random() * 10) + 1;
+                    proceso.insertar(valor, numero);
+                    caja1.append("Proceso: " + c + " --- Servicios: " + numero + "\n");
+                    c++;
+                }
+
+            } else if(opcion.equals("✔ Iniciar Simulación"))  {
+                int n = proceso.getTamano();
+                System.out.println(n);
+            } else {
                 caja1.setText("ERROR");
                 System.out.println("Debe escoger una opcion");
             }
         }
-        
+
     }
 
 }
