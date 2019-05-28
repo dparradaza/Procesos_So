@@ -110,7 +110,7 @@ public class Ventana extends JFrame implements ActionListener {
         texto1.updateUI();
         //---------------------
         //bordesitosxd = BorderFactory.createLineBorder(new Color(0,104,139), 2);
-        autor = new JLabel("Diego Parra(20141020063)-Oscar Bautista(20142020)");
+        autor = new JLabel("Diego Parra(20141020063)-Oscar Bautista(20142020213)");
         autor.setBounds(new Rectangle(5, 560, 390, 30));
         autor.setFont(fuente1);
         // autor.setBorder(bordesitosxd);
@@ -207,7 +207,7 @@ public class Ventana extends JFrame implements ActionListener {
                 }
         ));
         caja2.setRowHeight(30);
-        //jScrollPane1.setViewportView(caja2);
+        
     }
     Lista proceso = new Lista();
 
@@ -242,7 +242,7 @@ public class Ventana extends JFrame implements ActionListener {
                     matriz[i][1] = busca.getSig().getNombre();
                     matriz[i][2] = Integer.toString(busca.getSig().getNumeroServicios());
                     graficar(matriz);
-
+                    
                     if (busca.getSig().getNumeroServicios() > 3) {
                         int calculo = busca.getSig().getNumeroServicios() - 3;
                         busca.getSig().setNumeroServicios(calculo);
