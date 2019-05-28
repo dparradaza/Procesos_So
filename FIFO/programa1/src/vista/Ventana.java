@@ -59,6 +59,8 @@ public class Ventana extends JFrame implements ActionListener {
         combo = new JComboBox();
         combo.addItem("Seleccione una opción");
         combo.addItem("✔ Crear Procesos");
+        combo.addItem("✔ Iniciar Simulación");
+        combo.addItem("✔ Limpiar");
         //combo.addItem("✔ Ver reporte");
         //combo.addItem("✔ Pensum");
         combo.setBounds(getWidth() / 2 + 100, 80, 170, 22);
@@ -221,8 +223,8 @@ public class Ventana extends JFrame implements ActionListener {
         if (operar == e.getSource()) {
             String opcion = combo.getSelectedItem().toString();
             if (opcion.equals("✔ Crear Procesos")) {
-
-                combo.addItem("✔ Iniciar Simulación");
+                
+                
                 // proceso = new Cola2();
                 for (int i = 0; i < (int) (Math.random() * 10) + 3; i++) {
                     numero = (int) (Math.random() * 10) + 1;
@@ -236,7 +238,6 @@ public class Ventana extends JFrame implements ActionListener {
                 Nodo busca = proceso.obtenerDato(1);
                 int i = 0;
                 while (i < n) {
-
                     matriz[i][0] = Integer.toString(i);
                    // matriz[i][1] = busca.getId();
                     matriz[i][1] = busca.getSig().getNombre();
@@ -257,6 +258,10 @@ public class Ventana extends JFrame implements ActionListener {
                     }
                     i++;
                 }
+            }else if (opcion.equals("✔ Limpiar")){
+                caja1.setText("");
+                proceso=new Lista();
+                graficar(null);
             } else {
                 caja1.setText("ERROR");
                 System.out.println("Debe escoger una opcion");
