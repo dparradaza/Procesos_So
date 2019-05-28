@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
 import java.awt.Color;
@@ -20,8 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
-import logica.Cola;
 import logica.Cola2;
+import logica.Nodo;
 
 /**
  *
@@ -204,6 +199,8 @@ public class Ventana extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        char c = (char) 65;
+        int numero = 0;
         if (e.getSource() == cerrar) {
             System.exit(0);
         }
@@ -213,17 +210,29 @@ public class Ventana extends JFrame implements ActionListener {
                 System.out.println("Creando P");
                 combo.addItem("✔ Iniciar Simulación");
                 proceso = new Cola2();
-                char c = (char) 65;
                 for (int i = 0; i < 10; i++) {
-                    int numero = (int) (Math.random() * 10) + 1;
+                    numero = (int) (Math.random() * 10) + 1;
                     proceso.insertar(valor, numero);
                     caja1.append("Proceso: " + c + " --- Servicios: " + numero + "\n");
                     c++;
                 }
-
-            } else if(opcion.equals("✔ Iniciar Simulación"))  {
+            } else if (opcion.equals("✔ Iniciar Simulación")) {
                 int n = proceso.getTamano();
-                System.out.println(n);
+                Nodo servicio = proceso.obtenerDato(1);
+                int obtServ = servicio.getSig().getNumServ();
+                if (obtServ > 3) {
+                    int temp = obtServ - 3;
+                    servicio.setNumServ(temp);
+                    Nodo ultimo = servicio.getSig();
+                    servicio.setSig(ultimo.getSig());
+                    proceso.insertar(ultimo.getNombre(), ultimo.getNumServ());
+                    n = proceso.getTamano();
+                    caja2.append("Proceso: " + c + " --- Servicios: " + numero + "\n");
+                } else {
+                    Nodo ultimo = servicio.getSig();
+                    servicio.setSig(ultimo.getSig());
+                    n = proceso.getTamano();
+                }
             } else {
                 caja1.setText("ERROR");
                 System.out.println("Debe escoger una opcion");
