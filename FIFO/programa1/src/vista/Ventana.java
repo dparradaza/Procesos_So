@@ -1,6 +1,6 @@
 package vista;
 
-import modelo.Lista;
+import modelo.Cola;
 import modelo.Nodo;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -201,6 +201,7 @@ public class Ventana extends JFrame implements ActionListener {
         //pal2.setIcon(icon2);
         pal2.updateUI();
     }
+
     public void graficar(String matriz[][]) {
         caja2.setModel(new javax.swing.table.DefaultTableModel(
                 matriz,
@@ -209,9 +210,9 @@ public class Ventana extends JFrame implements ActionListener {
                 }
         ));
         caja2.setRowHeight(30);
-        
+
     }
-    Lista proceso = new Lista();
+    Cola proceso = new Cola();
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -223,8 +224,7 @@ public class Ventana extends JFrame implements ActionListener {
         if (operar == e.getSource()) {
             String opcion = combo.getSelectedItem().toString();
             if (opcion.equals("✔ Crear Procesos")) {
-                
-                
+
                 // proceso = new Cola2();
                 for (int i = 0; i < (int) (Math.random() * 10) + 3; i++) {
                     numero = (int) (Math.random() * 10) + 1;
@@ -234,16 +234,20 @@ public class Ventana extends JFrame implements ActionListener {
                 }
             } else if (opcion.equals("✔ Iniciar Simulación")) {
                 int n = proceso.getTam();
-                String matriz[][] = new String[400][4];
+                String matriz[][] = new String[50][4];
                 Nodo busca = proceso.obtenerDato(1);
                 int i = 0;
                 while (i < n) {
+                    System.out.println("i: "+i+"    n: "+n);
+                    System.out.println(proceso.getCab().getNombre());
+                    System.out.println(proceso.getCab().getSig().getNombre());
+                    System.out.println(proceso.getCab().getSig().getSig().getNombre());
                     matriz[i][0] = Integer.toString(i);
-                   // matriz[i][1] = busca.getId();
+                    // matriz[i][1] = busca.getId();
                     matriz[i][1] = busca.getSig().getNombre();
                     matriz[i][2] = Integer.toString(busca.getSig().getNumeroServicios());
                     graficar(matriz);
-                    
+
                     if (busca.getSig().getNumeroServicios() > 3) {
                         int calculo = busca.getSig().getNumeroServicios() - 3;
                         busca.getSig().setNumeroServicios(calculo);
@@ -258,9 +262,9 @@ public class Ventana extends JFrame implements ActionListener {
                     }
                     i++;
                 }
-            }else if (opcion.equals("✔ Limpiar")){
+            } else if (opcion.equals("✔ Limpiar")) {
                 caja1.setText("");
-                proceso=new Lista();
+                proceso = new Cola();
                 graficar(null);
             } else {
                 caja1.setText("ERROR");

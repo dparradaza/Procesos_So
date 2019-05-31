@@ -5,6 +5,7 @@
  */
 package cajero;
 
+import modelo.Nodo;
 import vista.Ventana;
 
 /**
@@ -12,8 +13,14 @@ import vista.Ventana;
  * @author diego
  */
 public class main {
-       public static void main(String[] args) {
+
+    public static void main(String[] args) {
         Ventana v = new Ventana();
         v.setVisible(true);
+        /*Nodo n = new Nodo(3, "2", "ejemplo");
+        System.out.println(n.getId());
+        System.out.println(n.getNombre());
+        System.out.println(n.getNumeroServicios());
+        System.out.println(n.getSig());*/
     }
 }

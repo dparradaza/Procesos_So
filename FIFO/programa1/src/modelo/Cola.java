@@ -2,14 +2,14 @@ package modelo;
 
 import modelo.Nodo;
 
-public class Lista {
+public class Cola {
 
     private Nodo cab;
     private int tam;
     Nodo p;
 
-    public Lista() {
-        cab = new Nodo(0, "bank", "Procesador");
+    public Cola() {
+        cab = new Nodo(0, "", "Procesador");
         p = cab;
         p.setSig(p);
     }
