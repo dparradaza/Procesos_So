@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package programa2;
+package main;
+
+import vista.Ventana;
 
 /**
  *
- * @author diego
+ * @author diego - oscar
  */
 public class Programa2 {
 
@@ -15,7 +17,8 @@ public class Programa2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Ventana v = new Ventana ();
+        v.setVisible(true);
     }
     
 }
