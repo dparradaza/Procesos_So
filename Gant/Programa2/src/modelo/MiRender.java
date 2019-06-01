@@ -24,14 +24,14 @@ public class MiRender extends DefaultTableCellRenderer {
             table.selectAll();
             String valor = (String) value;
             if (valor.equals("X")) {
-                cell.setBackground(Color.yellow);
-                cell.setForeground(Color.yellow); //color de la letra               
+                cell.setBackground(new Color(255, 0, 0));
+                cell.setForeground(new Color(255, 0, 0)); //color de la letra               
             } else if (valor.equals("E")) {
                 cell.setBackground(Color.green);
                 cell.setForeground(Color.green);
             } else if (valor.equals("B")) {
-                cell.setBackground(Color.cyan);
-                cell.setForeground(Color.cyan);
+                cell.setBackground(new Color(32, 50, 72));
+                cell.setForeground(new Color(32, 50, 72));
             } else if (valor.equals("S")) {
                 cell.setBackground(Color.orange);
                 cell.setForeground(Color.orange);
@@ -40,22 +40,22 @@ public class MiRender extends DefaultTableCellRenderer {
                 cell.setText("");
             } else if (valor != "X") {
                 table.selectAll();
-                cell.setForeground(Color.yellow);
+                cell.setForeground(new Color(255, 0, 0));
                 //cell.setText(null);                
                 //cell.setBackground(Color.blue);
             } else if (valor != "E") {
                 table.selectAll();
-                cell.setForeground(Color.yellow);
+                cell.setForeground(new Color(255, 0, 0));
                 //cell.setText(null);
                 //cell.setBackground(Color.blue);
             } else if (valor != "B") {
                 table.selectAll();
-                cell.setForeground(Color.yellow);
+                cell.setForeground(new Color(255, 0, 0));
                 //cell.setText(null);
                 //cell.setBackground(Color.blue);
             } else if (valor != "S") {
                 table.selectAll();
-                cell.setForeground(Color.yellow);
+                cell.setForeground(new Color(255, 0, 0));
                 //cell.setText(null);
                 //cell.setBackground(Color.blue);
             }              

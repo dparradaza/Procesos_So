@@ -59,13 +59,13 @@ public class Ventana extends JFrame implements ActionListener {
         //---------------------
         combo = new JComboBox();
         combo.addItem("Seleccione una opción");
-        combo.addItem("✔ Crear Procesos");
         combo.addItem("✔ Iniciar Simulación");
-        combo.addItem("✔ Limpiar");
+        combo.addItem("✔ Pausar");
+        combo.addItem("✔ Reanudar");
 
         //combo.addItem("✔ Ver reporte");
         //combo.addItem("✔ Pensum");
-        combo.setBounds(getWidth() / 2 + 100, 80, 170, 22);
+        combo.setBounds(getWidth() / 2 + 100, 80, 250, 22);
         combo.setLayout(null);
         combo.setBackground(new Color(24, 100, 167));
         combo.setForeground(new Color(235, 196, 56));
@@ -100,7 +100,7 @@ public class Ventana extends JFrame implements ActionListener {
         fuente1 = new Font("Comic Sans MS", Font.BOLD, 11);
         //mano = new Cursor(HAND_CURSOR);
         //----------------------- 
-        texto = new JLabel(" || ||");
+        texto = new JLabel(" ||Diagrama de Gant ||");
         texto.setFont(fuente);
         texto.setBounds(getWidth() / 25 - 25, getHeight() / 2 - 20, 500, 30);
         texto.setForeground(new Color(0, 104, 139));
@@ -116,8 +116,9 @@ public class Ventana extends JFrame implements ActionListener {
         //tiempo 
         tiempo_real = new JLabel();
         tiempo_real.setText("0");
+        tiempo_real.setFont(fuente);
         panelIzquierdo.add(tiempo_real);
-        tiempo_real.setBounds(getWidth() / 25 - 25, getHeight() / 2 + 20, 500, 30);
+        tiempo_real.setBounds(getWidth() / 25 + 140, getHeight() / 2 + 80, 500, 30);
         //---------------------
         //bordesitosxd = BorderFactory.createLineBorder(new Color(0,104,139), 2);
         autor = new JLabel("Diego Parra(20141020063)-Oscar Bautista(20142020213)");
@@ -146,7 +147,7 @@ public class Ventana extends JFrame implements ActionListener {
         // caja1.setBounds(getWidth() / 2 + 10, 200, 400, 120);
         procesos.setBackground(new Color(32, 50, 72));
         procesos.setForeground(new Color(235, 196, 56));
-        procesos.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
         //caja1.setLineWrap(true);
         scroll.setViewportView(procesos);
         scroll.setBounds((getWidth() / 2) - 150 + 10, 150, 660, 180);
@@ -337,7 +338,7 @@ public class Ventana extends JFrame implements ActionListener {
         cerrar.setBounds(1040, 1, 35, 35);
         panelDerecho.add(cerrar);
         cerrar.repaint();
-        //------------------------
+ /*------------------------
         operar = new JButton("Aceptar");
         operar.setBounds(getWidth() / 2 + 280, 80, 120, 25);
         //operar.setBorder(bordes1);
@@ -348,7 +349,7 @@ public class Ventana extends JFrame implements ActionListener {
         operar.addActionListener(this);
         panelDerecho.add(operar);
         operar.repaint();
-
+*/
         pal = new JLabel();
         pal.setBounds(10, 20, 470, 490);
         panelIzquierdo.add(pal);
@@ -381,18 +382,18 @@ public class Ventana extends JFrame implements ActionListener {
 
     }
 
-   public JTable getjTableAgregarProcesos() {
+    public JTable getjTableAgregarProcesos() {
         return procesos;
     }
-   
-       public JTable getjTable1() {
+
+    public JTable getjTable1() {
         return gant;
     }
 
     public void setjTable1(JTable jTable1) {
         this.gant = jTable1;
     }
-    
+
     public JLabel getTiempo_real() {
         return tiempo_real;
     }
@@ -400,6 +401,7 @@ public class Ventana extends JFrame implements ActionListener {
     public void setTiempo_real(JLabel tiempo_real) {
         this.tiempo_real = tiempo_real;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         char c = (char) 65;
@@ -407,26 +409,25 @@ public class Ventana extends JFrame implements ActionListener {
         if (e.getSource() == cerrar) {
             System.exit(0);
         }
-        if (operar == e.getSource()) {
-            String opcion = combo.getSelectedItem().toString();
-            if (opcion.equals("✔ Crear Procesos")) {
 
-            } else if (opcion.equals("✔ Iniciar Simulación")) {
-                controlador.vaciarTabla(procesos);
-                controlador.insertarEnCola();
-                if (controlador.getCola() != null) {
-                    gant.selectAll();
-                    controlador.agregarProceso(procesos, gant);
-                    controlador.start();
-                }
+        if (combo.getSelectedItem().equals("✔ Reanudar")) {
+            controlador.resume();
 
-            } else if (opcion.equals("✔ Limpiar")) {
-                controlador.suspend();
-
-            } else {
-                System.out.println("ERROR");
-                System.out.println("Debe escoger una opcion");
+        } else {
+        }
+        if (combo.getSelectedItem().equals("✔ Iniciar Simulación")) {
+            controlador.vaciarTabla(procesos);
+            controlador.insertarEnCola();
+            if (controlador.getCola() != null) {
+                gant.selectAll();
+                controlador.agregarProceso(procesos, gant);
+                controlador.start();
             }
+
+        }
+
+        if (combo.getSelectedItem().equals("✔ Pausar")) {
+            controlador.suspend();
         }
 
     }
