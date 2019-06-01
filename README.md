@@ -1,7 +1,7 @@
-#POGRAMAS DE SISTEMAS OPERATIVOS
+# POGRAMAS DE SISTEMAS OPERATIVOS
 Simulación de procesos en java
 
-#Autores
+# Autores
 OSCAR BAUTISTA 
 DIEGO PARRA
 
