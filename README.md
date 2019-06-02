@@ -1,5 +1,5 @@
 # POGRAMAS DE SISTEMAS OPERATIVOS
-##Simulación de procesos en java
+## Simulación de procesos en java
 
 # Autores
 - Oscar Bautista 
