@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import modelo.Cola;
 import modelo.GeneraRandom;
-import modelo.MiRender;
-import modelo.MiRender1;
+import modelo.FormatoTabla;
+import modelo.FormatoProcesos;
 import vista.Ventana;
 
 /**
@@ -165,12 +165,12 @@ public class Control  extends Thread{
             fase = null;
         }
         interfaz.getjTable1().setValueAt(fase, fila, columna);
-        interfaz.getjTable1().setDefaultRenderer(Object.class, new MiRender());
+        interfaz.getjTable1().setDefaultRenderer(Object.class, new FormatoTabla());
     }
     
     public void formatoTablaProcesos(int estado,int fila,int columna) {//actualiza diagrama de gantt desde la interfaz gráfica
         String fase = Integer.toString(estado); 
         interfaz.getjTableAgregarProcesos().setValueAt(fase, fila, columna);
-        interfaz.getjTableAgregarProcesos().setDefaultRenderer(Object.class, new MiRender1());
+        interfaz.getjTableAgregarProcesos().setDefaultRenderer(Object.class, new FormatoProcesos());
     }
 }
