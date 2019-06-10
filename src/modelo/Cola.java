@@ -233,11 +233,11 @@ public class Cola {
         while (reco != null) {
             a.add(reco.tiempoLlegada);
             a.add(reco.tiempoRafaga);
+            a.add(reco.prioridad);
             a.add(reco.tiempoComienzo);
             a.add(reco.tiempoFinal);
             a.add(reco.tiempoRetorno);
             a.add(reco.tiempoEspera);
-            a.add(reco.prioridad);
             reco = reco.sig;
         }
         return a;

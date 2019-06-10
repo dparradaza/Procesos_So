@@ -105,7 +105,7 @@ public class Ventana extends JFrame implements ActionListener {
         JScrollPane scroll = new JScrollPane();
         procesos = new JTable();
         procesos.setBackground(new Color(184, 207, 229));
-        procesos.setForeground(new Color(235, 196, 56));
+        procesos.setForeground(Color.BLACK);
         scroll.setViewportView(procesos);
         scroll.setBounds((getWidth() / 2) - 160, 150, 660, 183);
         procesos.updateUI();

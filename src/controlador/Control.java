@@ -36,54 +36,79 @@ public class Control extends Thread {
 
     @Override
     public void run() {
-        try {
-            for (int i = 0; i < tabla.getRowCount(); i++) {
-                for (int j = 0; j < tabla.getColumnCount(); j++) {
-                    if (j >= 0 && j < 5) {
-                        tabla.getModel().setValueAt(k + 1, k, j); //setValueAt(datoMostrar,numeroFila,numeroColumna)-#PROCESO
-                        tabla.getModel().setValueAt(cola.darLista().get(k + p), k, j + 1);//LLEGADA
-                        tabla.getModel().setValueAt(cola.darLista().get((k + 1) + p), k, j + 2);//RAFAGA
+        for (int i = 0; i < tabla.getRowCount(); i++) {
+            for (int j = 0; j < tabla.getColumnCount(); j++) {
+                if (j >= 0 && j < 4) {
+                    tabla.getModel().setValueAt(k + 1, k, j); //setValueAt(datoMostrar,numeroFila,numeroColumna)-#PROCESO
+                    tabla.getModel().setValueAt(cola.darLista().get(k + p), k, j + 1);//LLEGADA
+                    tabla.getModel().setValueAt(cola.darLista().get((k + 1) + p), k, j + 2);//RAFAGA
+                    tabla.getModel().setValueAt(cola.darLista().get((k + 2) + p), k, j + 3);//PRIORIDAD
 
-                        //formatoTablaProcesos(k + 1, k, j);
-                        //formatoTablaProcesos(cola.darLista().get(k + p), k, j + 1);
-                        //formatoTablaProcesos(cola.darLista().get((k + 1) + p), k, j + 2);
-                        j = j + 3;
-                        //tabla.getModel().setValueAt(cola.darLista().get((k + 2) + p), k, j);//PRIORIDAD
-                        //tabla.getModel().setValueAt(cola.darLista().get((k + 3) + p), k, j);//COMIENZO
-                        //formatoTablaProcesos(cola.darLista().get((k + 2) + p), k, j);
-                    }
-                    int comienzo = cola.darLista().get((k + 2) + p);
-                    int finalizacion = cola.darLista().get((k + 3) + p);
+                    formatoTablaProcesos(k + 1, k, j);
+                    formatoTablaProcesos(cola.darLista().get(k + p), k, j + 1);
+                    formatoTablaProcesos(cola.darLista().get((k + 1) + p), k, j + 2);
+                    formatoTablaProcesos(cola.darLista().get((k + 2) + p), k, j + 3);
+                    j = j + 4;
 
-                    int tiempo = cola.darLista().get(2);
-
-                    for (int k = comienzo; k <= finalizacion; k++) {
-                        sleep(500);
-                        interfaz.getTiempo_real().setText((Integer.toString(tiempo + cont) + ""));
-                        cont = cont + 1;
-                        diagramaGantt(1, fila, k);
-                        if (k == finalizacion) {
-                            tablaGant.getModel().setValueAt("C", fila, k);
-                            fila = fila + 1;
-                            cont = cont - 1;
-                        }
-                    }
-
-                    //tabla.getModel().setValueAt(cola.darLista().get((k + 3) + p), k, j + 1);//FINALIZACION
-                    //tabla.getModel().setValueAt(cola.darLista().get((k + 4) + p), k, j + 2);
-                    //tabla.getModel().setValueAt(cola.darLista().get((k + 5) + p), k, j + 3);//ESPERA                
-                    //formatoTablaProcesos(cola.darLista().get((k + 3) + p), k, j + 1);
-                    //formatoTablaProcesos(cola.darLista().get((k + 4) + p), k, j + 2);
-                    //formatoTablaProcesos(cola.darLista().get((k + 5) + p), k, j + 3);
-                    j = j + 3;
                 }
-                p = p + 6;
-                k = k + 1;
+                int comienzo = cola.darLista().get((k + 3) + p);
+                int finalizacion = cola.darLista().get((k + 4) + p);
+                int tiempo = cola.darLista().get(2);
+                for (int k = comienzo; k <= finalizacion; k++) {
+                    try {
+                        sleep(50);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    interfaz.getTiempo_real().setText((Integer.toString(tiempo + cont) + ""));
+                    cont = cont + 1;
+                    diagramaGantt(1, fila, k);
+                    if (k == finalizacion) {
+                        tablaGant.getModel().setValueAt("C", fila, k);
+                        fila = fila + 1;
+                        cont = cont - 1;
+                    }
+                }
+                tabla.getModel().setValueAt(cola.darLista().get((k + 3) + p), k, j);//COMIENZO
+                formatoTablaProcesos(cola.darLista().get((k + 3) + p), k, j);
+                tabla.getModel().setValueAt(cola.darLista().get((k + 4) + p), k, j + 1);//FINALIZACION
+                tabla.getModel().setValueAt(cola.darLista().get((k + 5) + p), k, j + 2);
+                tabla.getModel().setValueAt(cola.darLista().get((k + 6) + p), k, j + 3);//ESPERA
+                formatoTablaProcesos(cola.darLista().get((k + 4) + p), k, j + 1);
+                formatoTablaProcesos(cola.darLista().get((k + 5) + p), k, j + 2);
+                formatoTablaProcesos(cola.darLista().get((k + 6) + p), k, j + 3);
+                j = j + 3;
             }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
+            p = p + 6;
+            k = k + 1;
         }
         JOptionPane.showMessageDialog(null, "Fin de la operacion");
+    }
+    
+    public void diagramaGantt(int estado, int fila, int columna) {//actualiza diagrama de gantt desde la interfaz gráfica
+        String fase;
+        switch (estado) {
+            case 1:
+                fase = "X";
+                break;
+            case 2:
+                fase = "E";
+                break;
+            case 3:
+                fase = "B";
+                break;
+            case 4:
+                fase = "S";
+                break;
+            case 8:
+                fase = "C";
+                break;
+            default:
+                fase = null;
+                break;
+        }
+        interfaz.getGant().setValueAt(fase, fila, columna);
+        interfaz.getGant().setDefaultRenderer(Object.class, new MiRender());
     }
 
     public void insertarEnCola() {
@@ -118,26 +143,6 @@ public class Control extends Thread {
         String fase = Integer.toString(estado);
         interfaz.getProcesos().setValueAt(fase, fila, columna);
         interfaz.getProcesos().setDefaultRenderer(Object.class, new MiRender1());
-    }
-
-    public void diagramaGantt(int estado, int fila, int columna) {//actualiza diagrama de gantt desde la interfaz gráfica
-        String fase;
-
-        if (estado == 1) {
-            fase = "X";
-        } else if (estado == 2) {
-            fase = "E";
-        } else if (estado == 3) {
-            fase = "B";
-        } else if (estado == 4) {
-            fase = "S";
-        } else if (estado == 8) {
-            fase = "C";
-        } else {
-            fase = null;
-        }
-        interfaz.getGant().setValueAt(fase, fila, columna);
-        interfaz.getGant().setDefaultRenderer(Object.class, new MiRender());
     }
 
     public Cola getCola() {
