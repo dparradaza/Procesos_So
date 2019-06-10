@@ -188,12 +188,12 @@ public class Interfaz extends javax.swing.JFrame {
         tiempo_cpu.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         tiempo_cpu.setText("0");
         getContentPane().add(tiempo_cpu);
-        tiempo_cpu.setBounds(770, 720, 63, 20);
+        tiempo_cpu.setBounds(590, 650, 63, 20);
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         jLabel7.setText("Ráfaga ejecutada: ");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(650, 720, 134, 15);
+        jLabel7.setBounds(440, 650, 134, 15);
 
         texto_listos.setBackground(new java.awt.Color(0, 0, 0));
         texto_listos.setColumns(20);
@@ -207,12 +207,12 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         jLabel5.setText("Tiempo ráfaga proceso:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(840, 720, 168, 15);
+        jLabel5.setBounds(610, 650, 168, 15);
 
         cpu_nuevo1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         cpu_nuevo1.setText("0");
         getContentPane().add(cpu_nuevo1);
-        cpu_nuevo1.setBounds(1000, 720, 62, 14);
+        cpu_nuevo1.setBounds(800, 650, 62, 14);
 
         jScrollPane7.setToolTipText("");
 
@@ -261,7 +261,7 @@ public class Interfaz extends javax.swing.JFrame {
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         getContentPane().add(jScrollPane7);
-        jScrollPane7.setBounds(20, 390, 980, 310);
+        jScrollPane7.setBounds(20, 390, 980, 230);
 
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel10.setText("DIAGRAMA DE GANNT");
@@ -655,7 +655,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel1.setBounds(140, 0, 1190, 59);
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 10, 1370, 700);
+        jPanel3.setBounds(0, 10, 1370, 630);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(null);
