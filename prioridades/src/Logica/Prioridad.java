@@ -313,7 +313,7 @@ public class Prioridad extends Thread {
             fase = null;
         }
         interfaz.getjTable1().setValueAt(fase, actual.proceso - 1, transcurrido);
-        interfaz.getjTable1().setDefaultRenderer(Object.class, new MiRender());
+        interfaz.getjTable1().setDefaultRenderer(Object.class, new FormatoCelda());
         interfaz.getjTable1().setValueAt(actual.tiempo_en_espera, actual.proceso - 1, 98);
         interfaz.getjTable1().setValueAt(actual.tiempo_en_espera + actual.tiempo_cpu, actual.proceso - 1, 99);
 

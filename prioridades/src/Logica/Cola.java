@@ -189,6 +189,6 @@ public class Cola {
     public void formatoTablaProcesosAzul(int valor,int fila,int columna, JTable tabla) {//actualiza diagrama de gantt desde la interfaz gráfica
         String dato = Integer.toString(valor); 
         tabla.setValueAt(dato, fila, columna);
-        tabla.setDefaultRenderer(Object.class, new MiRender1());
+        tabla.setDefaultRenderer(Object.class, new FormatoCelda2());
     }
 }

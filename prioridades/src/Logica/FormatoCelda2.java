@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Chayder
  */
-public class MiRender1 extends DefaultTableCellRenderer {
+public class FormatoCelda2 extends DefaultTableCellRenderer {
 
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         JLabel cell = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
