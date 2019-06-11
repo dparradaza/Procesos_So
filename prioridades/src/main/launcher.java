@@ -19,6 +19,7 @@ public class launcher {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        System.out.println("holaaa");
               java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
@@ -26,4 +27,5 @@ public class launcher {
             }
         });    
     }
+    
 }
