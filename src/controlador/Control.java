@@ -64,7 +64,7 @@ public class Control extends Thread {
                     cont = cont + 1;
                     diagramaGantt(1, fila, k);
                     if (k == finalizacion) {
-                        tablaGant.getModel().setValueAt("C", fila, k);
+                        tablaGant.getModel().setValueAt("", fila, k);
                         fila = fila + 1;
                         cont = cont - 1;
                     }
@@ -84,7 +84,7 @@ public class Control extends Thread {
         }
         JOptionPane.showMessageDialog(null, "Fin de la operacion");
     }
-    
+
     public void diagramaGantt(int estado, int fila, int columna) {//actualiza diagrama de gantt desde la interfaz gráfica
         String fase;
         switch (estado) {
@@ -109,6 +109,12 @@ public class Control extends Thread {
         }
         interfaz.getGant().setValueAt(fase, fila, columna);
         interfaz.getGant().setDefaultRenderer(Object.class, new MiRender());
+    }
+
+    public void formatoTablaProcesos(int estado, int fila, int columna) {//actualiza diagrama de gantt desde la interfaz gráfica
+        String fase = Integer.toString(estado);
+        interfaz.getProcesos().setValueAt(fase, fila, columna);
+        interfaz.getProcesos().setDefaultRenderer(Object.class, new MiRender1());
     }
 
     public void insertarEnCola() {
@@ -137,12 +143,6 @@ public class Control extends Thread {
     public void agregarProceso(JTable tabla, JTable tablaGant) {
         this.tabla = tabla;
         this.tablaGant = tablaGant;
-    }
-
-    public void formatoTablaProcesos(int estado, int fila, int columna) {//actualiza diagrama de gantt desde la interfaz gráfica
-        String fase = Integer.toString(estado);
-        interfaz.getProcesos().setValueAt(fase, fila, columna);
-        interfaz.getProcesos().setDefaultRenderer(Object.class, new MiRender1());
     }
 
     public Cola getCola() {

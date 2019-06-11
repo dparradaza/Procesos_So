@@ -57,7 +57,8 @@ public class Cola {
                 reco.sig = nuevo;
                 nuevo.ant = reco;
                 nuevo.sig = null;
-                //nuevo.tiempoComienzo=nuevo.ant.tiempoFinal;
+                nuevo.tiempoComienzo=nuevo.ant.tiempoFinal;
+                
                 if (nuevo.ant.tiempoFinal < tiempoLlegada) {
                     nuevo.tiempoComienzo = tiempoLlegada;
                 } else {
@@ -219,16 +220,12 @@ public class Cola {
     }
 
     public boolean vacia() {
-        if (raiz == null) {
-            return true;
-        } else {
-            return false;
-        }
+        return raiz == null;
     }
 
     // Se almacena todos los datos en un ArrayList
     public ArrayList<Integer> darLista() {
-        ArrayList<Integer> a = new ArrayList<Integer>();
+        ArrayList<Integer> a = new ArrayList<>();
         Nodo reco = raiz;
         while (reco != null) {
             a.add(reco.tiempoLlegada);

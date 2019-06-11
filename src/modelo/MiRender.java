@@ -6,10 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-/**
- *
- * @author ADBA
- */
 public class MiRender extends DefaultTableCellRenderer {
 
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -19,13 +15,13 @@ public class MiRender extends DefaultTableCellRenderer {
             String valor = (String) value;
             if (valor.equals("X")) {
                 cell.setBackground(new Color(255, 0, 0));
-                cell.setForeground(new Color(255, 0, 0)); //color de la letra               
+                cell.setForeground(Color.BLACK); //color de la letra               
             } else if (valor.equals("E")) {
                 cell.setBackground(Color.green);
                 cell.setForeground(Color.green);
             } else if (valor.equals("B")) {
                 cell.setBackground(new Color(32, 50, 72));
-                cell.setForeground(new Color(32, 50, 72));
+                cell.setForeground(Color.BLACK);
             } else if (valor.equals("S")) {
                 cell.setBackground(Color.orange);
                 cell.setForeground(Color.orange);
@@ -45,14 +41,14 @@ public class MiRender extends DefaultTableCellRenderer {
             } else if (valor != "B") {
                 table.selectAll();
                 cell.setForeground(new Color(255, 0, 0));
-                //cell.setText(null);
-                //cell.setBackground(Color.blue);
+                cell.setText(null);
+                cell.setBackground(Color.blue);
             } else if (valor != "S") {
                 table.selectAll();
                 cell.setForeground(new Color(255, 0, 0));
                 //cell.setText(null);
                 //cell.setBackground(Color.blue);
-            }              
+            }
         }
         return cell;
     }
