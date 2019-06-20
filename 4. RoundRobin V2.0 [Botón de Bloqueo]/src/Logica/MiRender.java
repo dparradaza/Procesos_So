@@ -26,8 +26,8 @@ public class MiRender extends DefaultTableCellRenderer {
                 cell.setBackground(Color.red);
                 cell.setForeground(Color.red);                
             } else if (valor.equals("E")) {
-                cell.setBackground(Color.green);
-                cell.setForeground(Color.green);
+                cell.setBackground(new Color(0, 104, 139));
+                cell.setForeground(new Color(0, 104, 139));
             } else if (valor.equals("B")) {
                 cell.setBackground(Color.cyan);
                 cell.setForeground(Color.cyan);

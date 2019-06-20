@@ -66,9 +66,9 @@ public class Cola {
 
     //imprimir los nodos de la cola
     public void imprimirListos(JTextArea tx, JLabel label) {//imprime la cola en la interfaz
-        String txt = "     ---------------------- --------------- ---------------------- ---------------\n"
-                + "    | No.PROCESO | RÁFAGA |  EJECUTADO  | ESPERA \n"
-                + "     ---------------------- --------------- ---------------------- ---------------\n";
+        String txt = "                                                                               \n"
+                + "       No.PROCESO          RÁFAGA           EJECUTADO           ESPERA \n"
+                + "                                                                                  \n";
         Nodo impr;
         impr = p.sig;//asignar direccion del primer nodo que sigue a la cpu
         if (p == p.sig) {
@@ -76,17 +76,17 @@ public class Cola {
         }
         while (impr != p) {//se repite hasta encontrar el ultimo nodo
             if (impr.tiempo_cpu < 10) { //se valida esto para no dañar la tabla q se muestra
-                txt = txt + "    |              "
-                        + impr.proceso + "             |        "
-                        + impr.tiempo_final + "       |             "
-                        + "0" + impr.tiempo_cpu + "            |          "
-                        + impr.tiempo_en_espera + "        \n" + "     ---------------------- --------------- ---------------------- ---------------\n";
+                txt = txt + "                   "
+                        + impr.proceso + "                      "
+                        + impr.tiempo_final + "                     "
+                        + "0" + impr.tiempo_cpu + "                       "
+                        + impr.tiempo_en_espera + "        \n" + "                                                                                 \n";
             } else{
-                txt = txt + "    |              "
-                        + impr.proceso + "             |        "
-                        + impr.tiempo_final + "       |             "
-                        + impr.tiempo_cpu + "            |          "
-                        + impr.tiempo_en_espera + "        \n" + "     ---------------------- --------------- ---------------------- ---------------\n";
+                txt = txt + "                   "
+                        + impr.proceso + "                      "
+                        + impr.tiempo_final + "                     "
+                        + impr.tiempo_cpu + "                       "
+                        + impr.tiempo_en_espera + "        \n" + "                                                                                 \n";
             }
             tx.setText(txt);
             impr = impr.sig;//ubicar el siguiente nodo a mostrar

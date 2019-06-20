@@ -147,69 +147,36 @@ public class Interfaz extends javax.swing.JFrame {
 
         tiempo_cpu = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         cpu_nuevo1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel13 = new javax.swing.JPanel();
-        jPanel14 = new javax.swing.JPanel();
-        jPanel17 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        texto_listos = new javax.swing.JTextArea();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        total_bloqueados = new javax.swing.JLabel();
-        procesos_en_ejecucion = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        total_listos = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        tiempo_real = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        total_suspendidos = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        texto_listos = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         texto_bloqueados = new javax.swing.JTextArea();
-        jLabel27 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        texto_suspendidos = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
         texto_diagrama = new javax.swing.JTextArea();
         jLabel29 = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        texto_suspendidos = new javax.swing.JTextArea();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jPanel18 = new javax.swing.JPanel();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jLabel18 = new javax.swing.JLabel();
+        tiempo_real = new javax.swing.JLabel();
+        total_listos = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        total_bloqueados = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        total_suspendidos = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        procesos_en_ejecucion = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
 
@@ -228,85 +195,17 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel7.setText("Ráfaga ejecutada: ");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(300, 770, 107, 14);
-
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton5.setText("Salir");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(490, 740, 75, 29);
+        jLabel7.setBounds(300, 770, 114, 14);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel5.setText("Tiempo ráfaga proceso:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(120, 770, 133, 14);
+        jLabel5.setBounds(120, 770, 148, 14);
         getContentPane().add(cpu_nuevo1);
         cpu_nuevo1.setBounds(260, 770, 62, 14);
 
-        jPanel3.setBackground(new java.awt.Color(255, 248, 210));
+        jPanel3.setBackground(new java.awt.Color(255, 102, 51));
         jPanel3.setLayout(null);
-
-        jPanel13.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel13.setLayout(null);
-        jPanel3.add(jPanel13);
-        jPanel13.setBounds(0, 60, 1370, 10);
-
-        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel14.setLayout(null);
-
-        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel17.setLayout(null);
-        jPanel14.add(jPanel17);
-        jPanel17.setBounds(0, 690, 1370, 10);
-
-        jPanel3.add(jPanel14);
-        jPanel14.setBounds(0, 430, 1370, 10);
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 50)); // NOI18N
-        jLabel1.setText("ALGORITMO DE PLANIFICACIÓN - ROUND ROBIN");
-        jPanel3.add(jLabel1);
-        jLabel1.setBounds(60, 0, 1270, 60);
-
-        jPanel12.setBackground(new java.awt.Color(255, 241, 177));
-        jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel12.setLayout(null);
-
-        jScrollPane1.setBackground(new java.awt.Color(255, 0, 0));
-
-        texto_listos.setEditable(false);
-        texto_listos.setColumns(20);
-        texto_listos.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
-        texto_listos.setRows(5);
-        texto_listos.setToolTipText("");
-        texto_listos.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                texto_listosKeyTyped(evt);
-            }
-        });
-        jScrollPane1.setViewportView(texto_listos);
-
-        jPanel12.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 30, 360, 300);
-
-        jLabel23.setBackground(new java.awt.Color(204, 0, 0));
-        jLabel23.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel23.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PROCESOS LISTOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        jPanel12.add(jLabel23);
-        jLabel23.setBounds(10, 10, 400, 330);
-
-        jLabel26.setBackground(new java.awt.Color(204, 0, 0));
-        jLabel26.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel26.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PROCESOS LISTOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        jPanel12.add(jLabel26);
-        jLabel26.setBounds(10, 10, 400, 330);
-
-        jPanel3.add(jPanel12);
-        jPanel12.setBounds(320, 80, 420, 350);
 
         jScrollPane7.setToolTipText("");
         jScrollPane7.setMinimumSize(new java.awt.Dimension(1080, 23));
@@ -356,120 +255,39 @@ public class Interfaz extends javax.swing.JFrame {
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         jPanel3.add(jScrollPane7);
-        jScrollPane7.setBounds(10, 470, 1350, 210);
+        jScrollPane7.setBounds(510, 30, 810, 320);
 
-        jPanel8.setBackground(new java.awt.Color(255, 241, 177));
-        jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel8.setLayout(null);
+        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel15.setLayout(null);
+        jPanel3.add(jPanel15);
+        jPanel15.setBounds(0, 690, 1370, 10);
 
-        jLabel11.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel11.setText("Procesos Bloqueados:");
-        jPanel8.add(jLabel11);
-        jLabel11.setBounds(110, 70, 150, 15);
+        jScrollPane1.setBackground(new java.awt.Color(255, 0, 0));
 
-        total_bloqueados.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        total_bloqueados.setText("0");
-        jPanel8.add(total_bloqueados);
-        total_bloqueados.setBounds(250, 70, 65, 15);
+        texto_listos.setEditable(false);
+        texto_listos.setColumns(20);
+        texto_listos.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 12)); // NOI18N
+        texto_listos.setRows(5);
+        texto_listos.setToolTipText("");
+        texto_listos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                texto_listosKeyTyped(evt);
+            }
+        });
+        jScrollPane1.setViewportView(texto_listos);
 
-        procesos_en_ejecucion.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        procesos_en_ejecucion.setText("0");
-        jPanel8.add(procesos_en_ejecucion);
-        procesos_en_ejecucion.setBounds(250, 90, 41, 15);
+        jPanel3.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 30, 480, 320);
 
-        jLabel9.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel9.setText("Número de procesos:");
-        jPanel8.add(jLabel9);
-        jLabel9.setBounds(110, 50, 131, 15);
-
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel3.setText("Tiempo Transcurrido:");
-        jPanel8.add(jLabel3);
-        jLabel3.setBounds(110, 30, 133, 15);
-
-        total_listos.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        total_listos.setText("0");
-        jPanel8.add(total_listos);
-        total_listos.setBounds(250, 50, 31, 15);
-
-        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel6.setText("Proceso en ejecucion: ");
-        jPanel8.add(jLabel6);
-        jLabel6.setBounds(110, 90, 140, 15);
-
-        tiempo_real.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        tiempo_real.setText("0");
-        jPanel8.add(tiempo_real);
-        tiempo_real.setBounds(250, 30, 24, 15);
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.setLayout(null);
-
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel4.setText("Quantun:");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(100, 100, 60, 15);
-
-        jLabel13.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel13.setText("Procesos Suspendidos:");
-        jPanel2.add(jLabel13);
-        jLabel13.setBounds(14, 80, 150, 15);
-
-        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel8.setText("5");
-        jPanel2.add(jLabel8);
-        jLabel8.setBounds(170, 100, 10, 15);
-
-        total_suspendidos.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        total_suspendidos.setText("0");
-        jPanel2.add(total_suspendidos);
-        total_suspendidos.setBounds(170, 80, 20, 15);
-
-        jPanel8.add(jPanel2);
-        jPanel2.setBounds(80, 30, 200, 120);
-
-        jLabel30.setBackground(new java.awt.Color(0, 0, 255));
-        jLabel30.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel30.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EJECUCIÓN", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        jPanel8.add(jLabel30);
-        jLabel30.setBounds(20, 10, 270, 150);
-
-        jPanel3.add(jPanel8);
-        jPanel8.setBounds(10, 260, 300, 170);
-
-        jPanel9.setBackground(new java.awt.Color(255, 241, 177));
-        jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel9.setLayout(null);
-
-        jScrollPane8.setBackground(new java.awt.Color(0, 204, 204));
-
-        texto_bloqueados.setEditable(false);
-        texto_bloqueados.setColumns(20);
-        texto_bloqueados.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        texto_bloqueados.setRows(5);
-        texto_bloqueados.setToolTipText("");
-        jScrollPane8.setViewportView(texto_bloqueados);
-
-        jPanel9.add(jScrollPane8);
-        jScrollPane8.setBounds(20, 30, 260, 90);
-
-        jLabel27.setBackground(new java.awt.Color(0, 204, 204));
-        jLabel27.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel27.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PROCESOS BLOQUEADOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        jPanel9.add(jLabel27);
-        jLabel27.setBounds(10, 10, 280, 120);
-
-        jPanel3.add(jPanel9);
-        jPanel9.setBounds(750, 80, 300, 140);
-
-        jPanel6.setBackground(new java.awt.Color(255, 241, 177));
-        jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel6.setLayout(null);
-
-        jPanel1.setBackground(new java.awt.Color(146, 225, 238));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setLayout(null);
+        jButton1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        jButton1.setText("INICIAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1);
+        jButton1.setBounds(10, 580, 200, 60);
 
         jButton2.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         jButton2.setText("PAUSAR");
@@ -483,18 +301,8 @@ public class Interfaz extends javax.swing.JFrame {
                 jButton2KeyTyped(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(0, 30, 200, 29);
-
-        jButton1.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jButton1.setText("INICIAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(0, 0, 200, 29);
+        jPanel3.add(jButton2);
+        jButton2.setBounds(220, 580, 200, 25);
 
         jButton4.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         jButton4.setText("REANUDAR");
@@ -503,96 +311,50 @@ public class Interfaz extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4);
-        jButton4.setBounds(0, 60, 200, 29);
+        jPanel3.add(jButton4);
+        jButton4.setBounds(220, 620, 200, 25);
 
-        jButton6.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jButton6.setText("SALIR");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButton10.setText("Agregar Proceso");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButton10ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6);
-        jButton6.setBounds(0, 90, 200, 29);
+        jPanel3.add(jButton10);
+        jButton10.setBounds(20, 360, 190, 50);
 
-        jPanel6.add(jPanel1);
-        jPanel1.setBounds(80, 30, 200, 120);
-
-        jPanel7.setBackground(new java.awt.Color(255, 241, 177));
-        jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel7.setLayout(null);
-
-        jButton3.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jButton3.setText("INICIAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton11.setText("Bloquear Proceso");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton11ActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton3);
-        jButton3.setBounds(110, 30, 200, 29);
+        jPanel3.add(jButton11);
+        jButton11.setBounds(470, 580, 220, 25);
 
-        jButton7.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jButton7.setText("PAUSAR");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jPanel7.add(jButton7);
-        jButton7.setBounds(110, 60, 200, 29);
+        jScrollPane8.setBackground(new java.awt.Color(0, 204, 204));
 
-        jButton8.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jButton8.setText("REANUDAR");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jPanel7.add(jButton8);
-        jButton8.setBounds(110, 90, 200, 29);
+        texto_bloqueados.setEditable(false);
+        texto_bloqueados.setColumns(20);
+        texto_bloqueados.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        texto_bloqueados.setRows(5);
+        texto_bloqueados.setToolTipText("");
+        jScrollPane8.setViewportView(texto_bloqueados);
 
-        jButton9.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jButton9.setText("SALIR");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        jPanel7.add(jButton9);
-        jButton9.setBounds(110, 120, 200, 29);
+        jPanel3.add(jScrollPane8);
+        jScrollPane8.setBounds(450, 460, 260, 110);
 
-        jLabel12.setBackground(new java.awt.Color(0, 0, 204));
-        jLabel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ACCIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
-        jPanel7.add(jLabel12);
-        jLabel12.setBounds(20, 10, 300, 150);
+        jScrollPane9.setBackground(new java.awt.Color(255, 153, 51));
 
-        jPanel4.setBackground(new java.awt.Color(146, 225, 238));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.setLayout(null);
-        jPanel7.add(jPanel4);
-        jPanel4.setBounds(110, 30, 200, 120);
+        texto_suspendidos.setEditable(false);
+        texto_suspendidos.setColumns(20);
+        texto_suspendidos.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        texto_suspendidos.setRows(5);
+        texto_suspendidos.setToolTipText("");
+        jScrollPane9.setViewportView(texto_suspendidos);
 
-        jLabel25.setBackground(new java.awt.Color(0, 0, 204));
-        jLabel25.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ACCIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
-        jPanel7.add(jLabel25);
-        jLabel25.setBounds(20, 10, 300, 150);
-
-        jPanel6.add(jPanel7);
-        jPanel7.setBounds(1030, 90, 330, 170);
-
-        jLabel17.setBackground(new java.awt.Color(0, 0, 204));
-        jLabel17.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OPCIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
-        jPanel6.add(jLabel17);
-        jLabel17.setBounds(20, 10, 270, 150);
-
-        jPanel3.add(jPanel6);
-        jPanel6.setBounds(10, 80, 300, 170);
-
-        jPanel10.setBackground(new java.awt.Color(255, 241, 177));
-        jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel10.setLayout(null);
+        jPanel3.add(jScrollPane9);
+        jScrollPane9.setBounds(750, 460, 260, 110);
 
         jScrollPane6.setBackground(new java.awt.Color(0, 102, 102));
         jScrollPane6.setAutoscrolls(true);
@@ -605,82 +367,64 @@ public class Interfaz extends javax.swing.JFrame {
         texto_diagrama.setToolTipText("");
         jScrollPane6.setViewportView(texto_diagrama);
 
-        jPanel10.add(jScrollPane6);
-        jScrollPane6.setBounds(20, 30, 260, 290);
+        jPanel3.add(jScrollPane6);
+        jScrollPane6.setBounds(1060, 460, 260, 150);
 
         jLabel29.setBackground(new java.awt.Color(0, 102, 102));
         jLabel29.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         jLabel29.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PROCESOS FINALIZADOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        jPanel10.add(jLabel29);
-        jLabel29.setBounds(10, 10, 280, 330);
+        jPanel3.add(jLabel29);
+        jLabel29.setBounds(1060, 420, 260, 20);
 
-        jPanel3.add(jPanel10);
-        jPanel10.setBounds(1060, 80, 300, 350);
+        tiempo_real.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        tiempo_real.setText("0");
+        jPanel3.add(tiempo_real);
+        tiempo_real.setBounds(100, 500, 90, 50);
 
-        jPanel11.setBackground(new java.awt.Color(255, 241, 177));
-        jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel11.setLayout(null);
+        total_listos.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        total_listos.setText("0");
+        jPanel3.add(total_listos);
+        total_listos.setBounds(270, 370, 31, 30);
 
-        jScrollPane9.setBackground(new java.awt.Color(255, 153, 51));
+        jLabel11.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        jLabel11.setText("Procesos Bloqueados:");
+        jPanel3.add(jLabel11);
+        jLabel11.setBounds(450, 430, 190, 15);
 
-        texto_suspendidos.setEditable(false);
-        texto_suspendidos.setColumns(20);
-        texto_suspendidos.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        texto_suspendidos.setRows(5);
-        texto_suspendidos.setToolTipText("");
-        jScrollPane9.setViewportView(texto_suspendidos);
+        total_bloqueados.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        total_bloqueados.setText("0");
+        jPanel3.add(total_bloqueados);
+        total_bloqueados.setBounds(650, 430, 65, 15);
 
-        jPanel11.add(jScrollPane9);
-        jScrollPane9.setBounds(20, 30, 260, 79);
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        jLabel4.setText("Quantum:");
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(250, 520, 90, 15);
 
-        jLabel28.setBackground(new java.awt.Color(255, 153, 51));
-        jLabel28.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        jLabel28.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PROCESOS SUSPENDIDOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-        jPanel11.add(jLabel28);
-        jLabel28.setBounds(10, 10, 280, 110);
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        jLabel8.setText("5");
+        jPanel3.add(jLabel8);
+        jLabel8.setBounds(340, 520, 10, 15);
 
-        jPanel3.add(jPanel11);
-        jPanel11.setBounds(750, 220, 300, 140);
+        jLabel13.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        jLabel13.setText("Procesos Suspendidos:");
+        jPanel3.add(jLabel13);
+        jLabel13.setBounds(770, 430, 180, 15);
 
-        jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel10.setText("Diagrama de Gannt");
-        jPanel3.add(jLabel10);
-        jLabel10.setBounds(590, 440, 180, 22);
+        total_suspendidos.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        total_suspendidos.setText("0");
+        jPanel3.add(total_suspendidos);
+        total_suspendidos.setBounds(960, 430, 20, 15);
 
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setLayout(null);
-        jPanel3.add(jPanel15);
-        jPanel15.setBounds(0, 690, 1370, 10);
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        jLabel6.setText("Proceso en ejecucion: ");
+        jPanel3.add(jLabel6);
+        jLabel6.setBounds(510, 360, 210, 20);
 
-        jPanel18.setBackground(new java.awt.Color(195, 242, 250));
-        jPanel18.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jPanel18.setLayout(null);
-
-        jButton10.setText("Agregar Proceso");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        jPanel18.add(jButton10);
-        jButton10.setBounds(0, 0, 140, 29);
-
-        jButton11.setText("Bloquear Proceso");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-        jPanel18.add(jButton11);
-        jButton11.setBounds(140, 0, 140, 29);
-
-        jPanel3.add(jPanel18);
-        jPanel18.setBounds(760, 390, 280, 30);
-
-        jLabel18.setBackground(new java.awt.Color(0, 0, 204));
-        jLabel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ACCIONES", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
-        jPanel3.add(jLabel18);
-        jLabel18.setBounds(750, 370, 300, 60);
+        procesos_en_ejecucion.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        procesos_en_ejecucion.setText("0");
+        jPanel3.add(procesos_en_ejecucion);
+        procesos_en_ejecucion.setBounds(720, 360, 41, 15);
 
         getContentPane().add(jPanel3);
         jPanel3.setBounds(0, 10, 1370, 700);
@@ -698,58 +442,6 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (x == 0) {
-            obj.start();
-            jButton1.setEnabled(false);
-            jButton2.setEnabled(true);
-            jButton2.requestFocusInWindow(); 
-        } else {
-            JOptionPane.showMessageDialog(null, "Imposible comenzar nuevamente");
-        }
-        x = x + 1;
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        obj.suspend();
-        jButton2.setEnabled(false);
-        jButton4.setEnabled(true);
-        jButton4.requestFocusInWindow(); 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        obj.resume();
-        jButton2.setEnabled(true);
-        jButton4.setEnabled(false);
-        jButton2.requestFocusInWindow(); 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
     private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
         // TODO add your handling code here:
         
@@ -759,14 +451,10 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         char teclaPresionada = evt.getKeyChar();
         if(teclaPresionada == KeyEvent.VK_ENTER){
-            jButton1.doClick(); 
-            jButton2.requestFocusInWindow(); 
-        } 
+            jButton1.doClick();
+            jButton2.requestFocusInWindow();
+        }
     }//GEN-LAST:event_texto_listosKeyTyped
-
-    private void jButton2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2KeyTyped
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
@@ -779,6 +467,38 @@ public class Interfaz extends javax.swing.JFrame {
         obj.agregarProceso();
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        obj.resume();
+        jButton2.setEnabled(true);
+        jButton4.setEnabled(false);
+        jButton2.requestFocusInWindow();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (x == 0) {
+            obj.start();
+            jButton1.setEnabled(false);
+            jButton2.setEnabled(true);
+            jButton2.requestFocusInWindow();
+        } else {
+            JOptionPane.showMessageDialog(null, "Imposible comenzar nuevamente");
+        }
+        x = x + 1;
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2KeyTyped
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        obj.suspend();
+        jButton2.setEnabled(false);
+        jButton4.setEnabled(true);
+        jButton4.requestFocusInWindow();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -788,52 +508,19 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;

@@ -67,7 +67,7 @@ public class RoundRobin extends Thread {
                             interfaz.getTiempo_real().setText((Integer.parseInt(interfaz.getTiempo_real().getText()) + 1) + "");
                             cont = cont + 1;
                             if (cont == 90) {
-                                JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
+                                //JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
                                 interfaz.getjButton10().setEnabled(false);
                                 interfaz.getjButton11().setEnabled(false);
                                 stop();
@@ -105,7 +105,7 @@ public class RoundRobin extends Thread {
                                         listos.agregar(auxiliar);
                                         suspendidos.eliminarNodo(auxiliar);
                                         suspendidos.imprimir();
-                                        JOptionPane.showMessageDialog(null, "Proceso " + auxiliar.proceso + " suspendido.");
+                                        //JOptionPane.showMessageDialog(null, "Proceso " + auxiliar.proceso + " suspendido.");
                                         suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());                                        
                                         listos.imprimir();
                                         listos.imprimirListos(interfaz.getTexto_listos(), interfaz.getTotal_listos());
@@ -214,10 +214,10 @@ public class RoundRobin extends Thread {
 
                             // Se ingresan nuevos procesos de forma dinámica y aleatoria
                             b = r.nextBoolean();
-                            System.out.println("b: " + b + ", np: " + np + ", rnd: " + rnd);
+                            //System.out.println("b: " + b + ", np: " + np + ", rnd: " + rnd);
                             if (b) {
                                 if (np < rnd) {
-                                    JOptionPane.showMessageDialog(null, "Llega un nuevo proceso.");
+                                    //JOptionPane.showMessageDialog(null, "Llega un nuevo proceso.");
                                     interfaz.obj.agregarProceso();
                                     np++;
                                     if (np == rnd && cont > 40) {
