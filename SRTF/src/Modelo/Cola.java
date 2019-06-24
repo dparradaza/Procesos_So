@@ -48,23 +48,4 @@ public class Cola {
             return null;
         }
     }
-
-    public void imprimir() {
-        Nodo nuevo = raiz;
-        while (nuevo != null) {
-            System.out.println(nuevo.proceso.numeroProceso + " - " + nuevo.proceso.horaLlegada + " - " + nuevo.proceso.tiempoAuxiliarEjecucion);
-            nuevo = nuevo.sig;
-        }
-        System.out.println();
-    }
-
-    public int tamañoCola() {
-        Nodo reco = raiz;
-        int contador = 0;
-        while (reco != null) {
-            contador++;
-            reco = reco.sig;
-        }
-        return contador;
-    }
 }

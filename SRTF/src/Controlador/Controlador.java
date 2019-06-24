@@ -16,7 +16,6 @@ public final class Controlador extends JComponent {
         crearProcesador(vtn, j);
         this.setBounds(0, 0, contenedor.getWidth(), contenedor.getHeight());
         contenedor.add(this);
-
     }
 
     public void crearProcesador(Ventana vtn, JPanel j) {
@@ -25,8 +24,8 @@ public final class Controlador extends JComponent {
     }
 
     public void crearProceso(int horaLlegada, int numeroProceso) {
-        int tiempoVida = (int) (Math.random() * 20) + 1;
-        proceso = new Proceso(horaLlegada, tiempoVida, numeroProceso);
+        int rafaga = (int) (Math.random() * 10) + 1;
+        proceso = new Proceso(horaLlegada, rafaga, numeroProceso);
         añadirProceso(proceso, Procesador);
     }
 

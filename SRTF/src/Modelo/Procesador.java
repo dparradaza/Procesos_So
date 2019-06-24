@@ -14,18 +14,20 @@ import javax.swing.JPanel;
 
 public class Procesador extends Thread {
 
+    private Proceso proceso;
+    Ventana vista;
+    
     public int cantidadProcesos = 1, lineaX = 1;
     public int tiempoEjecucion = 0, cambioProceso;
     private final Cola colaListo, colaAtendidos;
-    private Proceso proceso;
-    Ventana vista;
+    
     //Atributos para poder pintar}
     private JPanel panel = null;
     int x = 10, y = 0, borde;
     Graphics g2 = null;
     private Point inicioArrastre;
     private Point finArrastre;
-    private ArrayList<Shape> rectangulos = new ArrayList<>();
+    private final ArrayList<Shape> rectangulos = new ArrayList<>();
     ArrayList<Proceso> listaProcesos = new ArrayList<>();
 
     public Procesador(Ventana vista, JPanel j) {
@@ -66,7 +68,6 @@ public class Procesador extends Thread {
 
     @Override
     public void run() {
-        System.out.println("run");
         while (true) {
             try {
                 if (!colaListo.vacia()) {
@@ -74,48 +75,45 @@ public class Procesador extends Thread {
                     ordenarCola();
                     //extraigo el primer proceso de la cola organizada
                     proceso = colaListo.extraer();
-                    if (cambioProceso != proceso.numeroProceso) {
-                        proceso.tiempoInicio.add(tiempoEjecucion);
-                        vista.modificarTabla(proceso.tiempoInicio, proceso.numeroProceso - 1, 3);
+                    if (cambioProceso != proceso.numProceso) {
+                        proceso.tmpInicio.add(tiempoEjecucion);
+                        vista.modificarTabla(proceso.tmpInicio, proceso.numProceso - 1, 3);
                     }
 
                     realizarTarea();
-                    if (proceso.tiempoAuxiliarEjecucion < 0) {
-                        proceso.tiempoFinalizacion.add(tiempoEjecucion);
-                        vista.modificarTabla(proceso.tiempoFinalizacion, proceso.numeroProceso - 1, 4);
+                    if (proceso.tmpAuxEjecucion < 0) {
+                        proceso.tmpFinal.add(tiempoEjecucion);
+                        vista.modificarTabla(proceso.tmpFinal, proceso.numProceso - 1, 4);
 
-                        proceso.tiempoRetorno = proceso.tiempoFinalizacion.get(proceso.tiempoFinalizacion.size() - 1) - proceso.horaLlegada;
-                        proceso.tiempoEspera = proceso.tiempoRetorno - proceso.tiempoEjecucion;
-                        vista.modificarTabla(proceso.tiempoRetorno, proceso.numeroProceso - 1, 5);
-                        vista.modificarTabla(proceso.tiempoEspera, proceso.numeroProceso - 1, 6);
+                        proceso.tmpRetorno = proceso.tmpFinal.get(proceso.tmpFinal.size() - 1) - proceso.horaLlegada;
+                        proceso.tmpEspera = proceso.tmpRetorno - proceso.tmpRafaga;
+                        vista.modificarTabla(proceso.tmpRetorno, proceso.numProceso - 1, 5);
+                        vista.modificarTabla(proceso.tmpEspera, proceso.numProceso - 1, 6);
                         colaAtendidos.insertar(proceso);
-                        cambioProceso = proceso.numeroProceso;
+                        cambioProceso = proceso.numProceso;
                     } else {
                         colaListo.insertar(proceso);
-                        cambioProceso = proceso.numeroProceso;
+                        cambioProceso = proceso.numProceso;
                     }
                     tiempoEjecucion++;
-                    pintar(x + (tiempoEjecucion * 22), y + (proceso.numeroProceso * 22));
+                    pintar(x + (tiempoEjecucion * 22), y + (proceso.numProceso * 22));
                     Procesador.sleep(500);
 
                 } else {
-                    System.out.println("colaVacia");
                     Procesador.sleep(500);
                 }
-
             } catch (InterruptedException ex) {
                 Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
     }
 
     public void calcularTiempoRetorno() {
-        proceso.tiempoRetorno = proceso.tiempoFinalizacion.get(proceso.tiempoFinalizacion.size() - 1) - proceso.horaLlegada;
+        proceso.tmpRetorno = proceso.tmpFinal.get(proceso.tmpFinal.size() - 1) - proceso.horaLlegada;
     }
 
     public void calcularTiempoEspera() {
-        proceso.tiempoEspera = proceso.tiempoRetorno - proceso.tiempoEjecucion;
+        proceso.tmpEspera = proceso.tmpRetorno - proceso.tmpRafaga;
     }
 
     public void ordenarCola() {
@@ -133,10 +131,9 @@ public class Procesador extends Thread {
 
     //Métodos para el control de los procesos
     public void realizarTarea() {
-        System.out.println("Atendiendo al proceso " + proceso.numeroProceso);
-        proceso.tiempoAuxiliarEjecucion--;
-        System.out.println("TIEMPO INICIO: " + proceso.tiempoInicio);
-        System.out.println("TIEMPO FIN: " + proceso.tiempoFinalizacion);
+        //System.out.println("Atendiendo al proceso " + proceso.numProceso);
+        proceso.tmpAuxEjecucion--;
+        //System.out.println("INICIO: " + proceso.tmpInicio);
     }
 
     //Métodos para el cambio de colas en los procesos
@@ -147,6 +144,7 @@ public class Procesador extends Thread {
     public void cambiarListo() {
         colaListo.insertar(proceso);
     }
+    
 
     //Métodos para actualizar las tablas
     public Cola getColaListo() {

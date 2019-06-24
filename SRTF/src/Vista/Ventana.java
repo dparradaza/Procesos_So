@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class Ventana extends JFrame implements ActionListener {
 
     private final DefaultTableModel modeloTabla;
-    private Controlador control;
+    private Controlador ctrl;
 
     private JPanel panIzquierdo, panDerecho, panDibujo;
     private JButton btnInicio, btnPausa, btnBloq, btnDesb;
@@ -39,7 +39,7 @@ public class Ventana extends JFrame implements ActionListener {
     }
 
     private void crearVentana() {
-        setSize(1300, 700);
+        setSize(1200, 550);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setUndecorated(false);
@@ -49,7 +49,7 @@ public class Ventana extends JFrame implements ActionListener {
 
     private void PanelIzq() {
         panIzquierdo = new JPanel();
-        panIzquierdo.setBounds(0, 0, (getWidth() / 2) - 300,getHeight());
+        panIzquierdo.setBounds(0, 0, (getWidth() / 2) - 300, getHeight());
         panIzquierdo.setBackground(new Color(229, 231, 233));
         panIzquierdo.setLayout(null);
         panIzquierdo.updateUI();
@@ -107,13 +107,13 @@ public class Ventana extends JFrame implements ActionListener {
         tblProcesos.setBackground(new Color(184, 207, 229));
         tblProcesos.setForeground(Color.BLACK);
         scpArriba.setViewportView(tblProcesos);
-        scpArriba.setBounds((getWidth() / 2) - 160, 30, 660, 183);
+        scpArriba.setBounds((getWidth() / 2) - 280, 20, 600, 183);
         tblProcesos.updateUI();
         panDerecho.add(scpArriba);
         tblProcesos.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Proceso", "T.Rafada", "T.Llegada", "T.Comienzo", "T.Final", "T. Retorno", "T.Espera"
+                    "P.", "T.Llegada", "T.Rafada", "T.Comienzo", "T.Final", "T. Retorno", "T.Espera"
                 }
         ));
 
@@ -122,7 +122,7 @@ public class Ventana extends JFrame implements ActionListener {
         panDibujo = new JPanel();
         panDibujo.setBackground(new Color(254, 249, 231));
         scpAbajo.setViewportView(panDibujo);
-        scpAbajo.setBounds((getWidth() / 2) - 280, 220, 800, 300);
+        scpAbajo.setBounds((getWidth() / 2) - 280, 220, 850, 300);
         panDerecho.add(scpAbajo);
     }
 
@@ -143,19 +143,22 @@ public class Ventana extends JFrame implements ActionListener {
     }
 
     public void iniciar() {
-        if (control == null) {
-            control = new Controlador(this, panDibujo, panDibujo);
+        if (ctrl == null) {
+            ctrl = new Controlador(this, panDibujo, panDibujo);
         }
-        control.crearProceso(control.tiempoTranscurrido(), numeroProceso);
+        ctrl.crearProceso(ctrl.tiempoTranscurrido(), numeroProceso);
         numeroProceso++;
         llenarTabla();
     }
 
     public void llenarTabla() {
-        obj = new Object[]{control.retornoProceso().numeroProceso, control.retornoProceso().tiempoEjecucion,
-            control.retornoProceso().horaLlegada, control.retornoProceso().tiempoInicio,
-            control.retornoProceso().tiempoFinalizacion, control.retornoProceso().tiempoRetorno,
-            control.retornoProceso().tiempoEspera};
+        obj = new Object[]{ctrl.retornoProceso().numProceso,
+            ctrl.retornoProceso().horaLlegada,
+            ctrl.retornoProceso().tmpRafaga, 
+            ctrl.retornoProceso().tmpInicio,
+            ctrl.retornoProceso().tmpFinal,
+            ctrl.retornoProceso().tmpRetorno,
+            ctrl.retornoProceso().tmpEspera};
         modeloTabla.addRow(obj);
     }
 
@@ -163,10 +166,10 @@ public class Ventana extends JFrame implements ActionListener {
         tblProcesos.setValueAt(lista, fila, columna);
 
     }
-    
-    public void modificarTabla(int valor,int fila,int columna){
-       tblProcesos.setValueAt(valor, fila, columna);
-        
+
+    public void modificarTabla(int valor, int fila, int columna) {
+        tblProcesos.setValueAt(valor, fila, columna);
+
     }
 
     public JTable getTblProcesos() {

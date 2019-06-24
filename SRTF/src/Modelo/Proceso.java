@@ -4,26 +4,26 @@ import java.util.ArrayList;
 
 public class Proceso implements Comparable<Proceso> {
 
-    public int numeroProceso, tiempoEjecucion, tiempoAuxiliarEjecucion, tiempoRetorno, tiempoEspera;
-    public ArrayList<Integer> tiempoInicio, tiempoFinalizacion;
+    public int numProceso, tmpRafaga, tmpAuxEjecucion, tmpRetorno, tmpEspera;
+    public ArrayList<Integer> tmpInicio, tmpFinal;
     public int horaLlegada;
 
     public Proceso(int horaLlegada, int tiempoEjecucion, int numeroProceso) {
         this.horaLlegada = horaLlegada;
-        this.tiempoEjecucion = tiempoEjecucion;
-        this.numeroProceso = numeroProceso;
-        tiempoInicio = new ArrayList<>();
-        tiempoFinalizacion = new ArrayList<>();
-        this.tiempoAuxiliarEjecucion = tiempoEjecucion;
+        this.tmpRafaga = tiempoEjecucion;
+        this.numProceso = numeroProceso;
+        tmpInicio = new ArrayList<>();
+        tmpFinal = new ArrayList<>();
+        this.tmpAuxEjecucion = tiempoEjecucion;
 
     }
 
     @Override
     public int compareTo(Proceso process) {
-        if (tiempoAuxiliarEjecucion < process.tiempoAuxiliarEjecucion) {
+        if (tmpAuxEjecucion < process.tmpAuxEjecucion) {
             return -1;
         }
-        if (tiempoAuxiliarEjecucion > process.tiempoAuxiliarEjecucion) {
+        if (tmpAuxEjecucion > process.tmpAuxEjecucion) {
             return 1;
         }
         return 0;
@@ -31,14 +31,14 @@ public class Proceso implements Comparable<Proceso> {
 
     public long tiempoLlevado() {
         long tiempo = 0;
-        for (int i = 0; i < tiempoInicio.size(); i++) {
-            tiempo += tiempoFinalizacion.get(i) - tiempoInicio.get(i);
+        for (int i = 0; i < tmpInicio.size(); i++) {
+            tiempo += tmpFinal.get(i) - tmpInicio.get(i);
         }
         return tiempo;
     }
 
     public long getTiempoRestante() {
-        tiempoAuxiliarEjecucion = tiempoEjecucion - tiempoAuxiliarEjecucion;
-        return tiempoAuxiliarEjecucion;
+        tmpAuxEjecucion = tmpRafaga - tmpAuxEjecucion;
+        return tmpAuxEjecucion;
     }
 }
