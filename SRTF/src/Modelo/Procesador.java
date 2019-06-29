@@ -77,7 +77,7 @@ public class Procesador extends Thread {
                     proceso = colaListo.extraer();
                     if (cambioProceso != proceso.numProceso) {
                         proceso.tmpInicio.add(tiempoEjecucion);
-                        vista.modificarTabla(proceso.tmpInicio, proceso.numProceso - 1, 3);
+                        vista.modificarTabla(proceso.tmpInicio.get(0), proceso.numProceso - 1, 3);
                     }
 
                     realizarTarea();
