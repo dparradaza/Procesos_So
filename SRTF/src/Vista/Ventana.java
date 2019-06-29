@@ -21,7 +21,7 @@ public class Ventana extends JFrame implements ActionListener {
     private Controlador ctrl;
 
     private JPanel panIzquierdo, panDerecho, panDibujo;
-    private JButton btnInicio, btnPausa, btnBloq, btnDesb;
+    private JButton btnInicio, btnPausa, btnBloq, btnDesb, btnAgregar;
     private JTable tblProcesos;
     private JLabel lblTitulo, lblNombres;
     private Font fuente, fuente1;
@@ -85,6 +85,11 @@ public class Ventana extends JFrame implements ActionListener {
         btnInicio.setBounds(60, 100, 90, 20);
         btnInicio.addActionListener(this);
         panIzquierdo.add(btnInicio);
+        
+        btnAgregar = new JButton("AGREGA");
+        btnAgregar.setBounds(60, 200, 90, 20);
+        btnAgregar.addActionListener(this);
+        panIzquierdo.add(btnAgregar);
 
         btnPausa = new JButton("PAUSAR");
         btnPausa.setBounds(60, 150, 90, 20);
@@ -113,7 +118,7 @@ public class Ventana extends JFrame implements ActionListener {
         tblProcesos.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "P.", "T.Llegada", "T.Rafada", "T.Comienzo", "T.Final", "T. Retorno", "T.Espera"
+                    "P.", "T.Llegada", "T.Rafaga", "T.Comienzo", "T.Final", "T. Retorno", "T.Espera"
                 }
         ));
 
@@ -130,7 +135,10 @@ public class Ventana extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnInicio) {
             iniciar();
+            iniciar();
         }
+        
+        
         if (e.getSource() == btnPausa) {
 
         }
@@ -140,6 +148,10 @@ public class Ventana extends JFrame implements ActionListener {
         if (e.getSource() == btnDesb) {
 
         }
+        if (e.getSource() == btnAgregar) {
+            iniciar();
+        }
+        
     }
 
     public void iniciar() {
