@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 public class Ventana extends JFrame implements ActionListener {
@@ -23,8 +24,9 @@ public class Ventana extends JFrame implements ActionListener {
     private JPanel panIzquierdo, panDerecho, panDibujo;
     private JButton btnInicio, btnPausa, btnBloq, btnDesb, btnAgregar;
     private JTable tblProcesos;
-    private JLabel lblTitulo, lblNombres;
+    private JLabel lblTitulo, lblNombres, lblBloq;
     private Font fuente, fuente1;
+    private JTextArea areaBloq;
 
     int numeroProceso = 1;
     Object[] obj;
@@ -77,7 +79,7 @@ public class Ventana extends JFrame implements ActionListener {
 
         lblNombres = new JLabel("Oscar Bautista & Diego Parra");
         lblNombres.setFont(fuente1);
-        lblNombres.setBounds(125, 420, 300, 20);
+        lblNombres.setBounds(25, 420, 300, 20);
         lblNombres.setForeground(new Color(0, 104, 139));
         panIzquierdo.add(lblNombres);
         // Botones
@@ -121,7 +123,18 @@ public class Ventana extends JFrame implements ActionListener {
                     "P.", "T.Llegada", "T.Rafaga", "T.Comienzo", "T.Final", "T. Retorno", "T.Espera"
                 }
         ));
-
+        //lbl bloqueados
+        lblBloq = new JLabel("Bloqueados");
+        lblBloq.setFont(fuente1);
+        lblBloq.setBounds((getWidth() / 2) +330 , 10, 100, 40);
+        lblBloq.setForeground(new Color(0, 104, 139));
+        panDerecho.add(lblBloq);
+        //bloqueados
+        areaBloq = new JTextArea();
+        areaBloq.setBackground(new Color(184, 207, 229));
+        areaBloq.setBounds((getWidth() / 2) +330 , 45, 250, 157);
+        panDerecho.add(areaBloq);
+        
         //Canvas
         JScrollPane scpAbajo = new JScrollPane();
         panDibujo = new JPanel();

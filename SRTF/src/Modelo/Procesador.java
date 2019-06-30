@@ -40,7 +40,7 @@ public class Procesador extends Thread {
 
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.RED);
+        g2.setColor(new Color(32, 212, 27));
         rectangulos.forEach((rectangulo) -> {
             // dibuja todos los rectangulos            
             g2.fill(rectangulo);
@@ -72,7 +72,7 @@ public class Procesador extends Thread {
             try {
                 if (!colaListo.vacia()) {
                     //ordena la cola 
-                    ordenarCola();
+                    ordenarCola();   
                     //extraigo el primer proceso de la cola organizada
                     proceso = colaListo.extraer();
                     if (cambioProceso != proceso.numProceso) {
@@ -83,7 +83,7 @@ public class Procesador extends Thread {
                     realizarTarea();
                     if (proceso.tmpAuxEjecucion < 0) {
                         proceso.tmpFinal.add(tiempoEjecucion);
-                        vista.modificarTabla(proceso.tmpFinal, proceso.numProceso - 1, 4);
+                        vista.modificarTabla(proceso.tmpFinal.get(0), proceso.numProceso - 1, 4);
 
                         proceso.tmpRetorno = proceso.tmpFinal.get(proceso.tmpFinal.size() - 1) - proceso.horaLlegada;
                         proceso.tmpEspera = proceso.tmpRetorno - proceso.tmpRafaga;
