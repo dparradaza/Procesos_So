@@ -3,7 +3,6 @@ package Modelo;
 public class Cola {
 
     public class Nodo {
-
         Proceso proceso;
         Nodo sig;
     }
@@ -13,7 +12,6 @@ public class Cola {
     public Cola() {
         raiz = null;
         fondo = null;
-
     }
 
     public boolean vacia() {

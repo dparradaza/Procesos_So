@@ -87,16 +87,16 @@ public class Ventana extends JFrame implements ActionListener {
         btnInicio.setBounds(60, 100, 90, 20);
         btnInicio.addActionListener(this);
         panIzquierdo.add(btnInicio);
-        
+
         btnAgregar = new JButton("AGREGA");
-        btnAgregar.setBounds(60, 200, 90, 20);
+        btnAgregar.setBounds(60, 150, 90, 20);
         btnAgregar.addActionListener(this);
         panIzquierdo.add(btnAgregar);
 
-        btnPausa = new JButton("PAUSAR");
+        /*btnPausa = new JButton("PAUSAR");
         btnPausa.setBounds(60, 150, 90, 20);
         btnPausa.addActionListener(this);
-        panIzquierdo.add(btnPausa);
+        panIzquierdo.add(btnPausa);*/
 
         btnBloq = new JButton("BLOQUEAR");
         btnBloq.setBounds(160, 100, 125, 20);
@@ -126,15 +126,15 @@ public class Ventana extends JFrame implements ActionListener {
         //lbl bloqueados
         lblBloq = new JLabel("Bloqueados");
         lblBloq.setFont(fuente1);
-        lblBloq.setBounds((getWidth() / 2) +330 , 10, 100, 40);
+        lblBloq.setBounds((getWidth() / 2) + 330, 10, 100, 40);
         lblBloq.setForeground(new Color(0, 104, 139));
         panDerecho.add(lblBloq);
         //bloqueados
         areaBloq = new JTextArea();
         areaBloq.setBackground(new Color(184, 207, 229));
-        areaBloq.setBounds((getWidth() / 2) +330 , 45, 250, 157);
+        areaBloq.setBounds((getWidth() / 2) + 330, 45, 250, 157);
         panDerecho.add(areaBloq);
-        
+
         //Canvas
         JScrollPane scpAbajo = new JScrollPane();
         panDibujo = new JPanel();
@@ -142,16 +142,29 @@ public class Ventana extends JFrame implements ActionListener {
         scpAbajo.setViewportView(panDibujo);
         scpAbajo.setBounds((getWidth() / 2) - 280, 220, 850, 300);
         panDerecho.add(scpAbajo);
+        
+        javax.swing.GroupLayout panelDibujoLayout = new javax.swing.GroupLayout(panDibujo);
+        panDibujo.setLayout(panelDibujoLayout);
+        panelDibujoLayout.setHorizontalGroup(
+            panelDibujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1341, Short.MAX_VALUE)
+        );
+        panelDibujoLayout.setVerticalGroup(
+            panelDibujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 278, Short.MAX_VALUE)
+        );
+
+        scpAbajo.setViewportView(panDibujo);
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnInicio) {
             iniciar();
-            iniciar();
+            btnInicio.setEnabled(false);
         }
-        
-        
+
         if (e.getSource() == btnPausa) {
 
         }
@@ -162,12 +175,23 @@ public class Ventana extends JFrame implements ActionListener {
 
         }
         if (e.getSource() == btnAgregar) {
-            iniciar();
+            agregar();
         }
-        
+
     }
 
     public void iniciar() {
+        if (ctrl == null) {
+            ctrl = new Controlador(this, panDibujo, panDibujo);
+        }
+        for (int i = 0; i < 3; i++) {
+            ctrl.crearProceso(ctrl.tiempoTranscurrido(), numeroProceso);
+            numeroProceso++;
+            llenarTabla();
+        }
+    }
+
+    public void agregar() {
         if (ctrl == null) {
             ctrl = new Controlador(this, panDibujo, panDibujo);
         }
@@ -179,7 +203,7 @@ public class Ventana extends JFrame implements ActionListener {
     public void llenarTabla() {
         obj = new Object[]{ctrl.retornoProceso().numProceso,
             ctrl.retornoProceso().horaLlegada,
-            ctrl.retornoProceso().tmpRafaga, 
+            ctrl.retornoProceso().tmpRafaga,
             ctrl.retornoProceso().tmpInicio,
             ctrl.retornoProceso().tmpFinal,
             ctrl.retornoProceso().tmpRetorno,

@@ -8,14 +8,14 @@ public class Proceso implements Comparable<Proceso> {
     public ArrayList<Integer> tmpInicio, tmpFinal;
     public int horaLlegada;
 
-    public Proceso(int horaLlegada, int tiempoEjecucion, int numeroProceso) {
+    public Proceso(int horaLlegada, int tmpRafaga, int numeroProceso) {
         this.horaLlegada = horaLlegada;
         //solucion al pintado del tamaño de rafaga
-        this.tmpRafaga = tiempoEjecucion+1;
+        this.tmpRafaga = tmpRafaga + 1;
         this.numProceso = numeroProceso;
         tmpInicio = new ArrayList<>();
         tmpFinal = new ArrayList<>();
-        this.tmpAuxEjecucion = tiempoEjecucion;
+        this.tmpAuxEjecucion = tmpRafaga;
 
     }
 

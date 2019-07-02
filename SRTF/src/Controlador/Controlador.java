@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Procesador;
 import Modelo.Proceso;
 import Vista.Ventana;
+import java.awt.Component;
 import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -15,7 +16,7 @@ public final class Controlador extends JComponent {
     public Controlador(Ventana vtn, JComponent contenedor, JPanel j) {
         crearProcesador(vtn, j);
         this.setBounds(0, 0, contenedor.getWidth(), contenedor.getHeight());
-        contenedor.add(this);
+        Component add = contenedor.add(this);
     }
 
     public void crearProcesador(Ventana vtn, JPanel j) {
