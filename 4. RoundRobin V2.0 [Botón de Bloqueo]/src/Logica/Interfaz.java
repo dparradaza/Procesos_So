@@ -4,8 +4,9 @@
  */
 package Logica;
 
-import com.sun.glass.events.KeyEvent;
+
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
