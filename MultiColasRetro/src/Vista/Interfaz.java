@@ -19,9 +19,9 @@ public class Interfaz extends JFrame implements ActionListener {
             lblTotalCola2, lblTotalCola3, lblTotalSistema, lblTotalSuspendidos,
             lblTotalUsuarios, lblTranscurrido, lblTitulo, lblTituloAtendidos, lblTituloBloqueados, lblTituloRR, lblTituloSJF, lblTituloFIFO;
     private JPanel panVentana, panEjecucion;
-    private JScrollPane scpBloqueados, scpFIFO, scpFinalizados, scpGantt, scpRoundRobin, scpSFJ, scpSuspendidos;
+    private JScrollPane scpBloqueados, scpFIFO, scpFinalizados, scpGantt, scpRoundRobin, scpSFJ;
     private JTable tblGantt;
-    private JTextArea texto_atendidos, texto_bloqueados, texto_suspendidos, txaFIFO, txaRoundRobin, txaSJF;
+    private JTextArea texto_atendidos, texto_bloqueados, txaFIFO, txaRoundRobin, txaSJF;
 
     private Font fuente, fuente1;
 
@@ -74,19 +74,19 @@ public class Interfaz extends JFrame implements ActionListener {
     }
 
     private void agregaRR() {
-        JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola1");
+        //JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola1");
         round_robin.agregar_proceso = true;
         round_robin.agregarProceso();
     }
 
     private void agregaFIFO() {
-        JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola3");
+        //JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola3");
         fifo.agregar_proceso = true;
         fifo.agregarProceso();
     }
 
     private void agregaSFJ() {
-        JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola2");
+        //JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola2");
         srtf.agregar_proceso = true;
         srtf.agregarProceso();
     }
@@ -129,8 +129,6 @@ public class Interfaz extends JFrame implements ActionListener {
         txaSJF = new JTextArea();
         scpFIFO = new JScrollPane();
         txaFIFO = new JTextArea();
-        scpSuspendidos = new JScrollPane();
-        texto_suspendidos = new JTextArea();
         scpFinalizados = new JScrollPane();
         texto_atendidos = new JTextArea();
         lblTotalCola1 = new JLabel();
@@ -181,7 +179,7 @@ public class Interfaz extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
 
         panVentana.setBounds(0, 0, 1366, 725);
-        panVentana.setBackground(new java.awt.Color(255, 248, 210));
+        panVentana.setBackground(new java.awt.Color(229, 231, 233));
     }
 
     private void dibujaGantt() {
@@ -266,7 +264,7 @@ public class Interfaz extends JFrame implements ActionListener {
         lblProEjecucion.setText("P. Ejecucion: ");
 
         lblQuantum.setFont(fuente);
-        lblQuantum.setText("Quantum:   5");
+        lblQuantum.setText("Quantum:            5");
 
         lblTotFinal.setText("Total Finalizados:");
         lblTotFinal.setFont(fuente);
@@ -281,10 +279,10 @@ public class Interfaz extends JFrame implements ActionListener {
         lblNumTotFinal.setFont(fuente);
 
         lblNumRafTotal.setText("0");
-        lblNumTotFinal.setFont(fuente);
+        lblNumRafTotal.setFont(fuente);
 
         lblNumRafEje.setText("0");
-        lblNumTotFinal.setFont(fuente);
+        lblNumRafEje.setFont(fuente);
 
         diseñoPanEjecucion();
 
@@ -305,11 +303,11 @@ public class Interfaz extends JFrame implements ActionListener {
         lblTitulo.setFont(fuente1);
         lblTitulo.setText("Multicolas con Retroalimentacion");
 
-        lblTituloRR.setText("Round Robin (Magneta) ");
+        lblTituloRR.setText("Round Robin (Verde) ");
 
-        lblTituloSJF.setText("SJF (Rojo) ");
+        lblTituloSJF.setText("SJF (Naranja) ");
 
-        lblTituloFIFO.setText("FIFO (Amarillo)");
+        lblTituloFIFO.setText("Prioridad (Morado)");
 
         lblTituloAtendidos.setText("Atendidos");
 
@@ -384,9 +382,6 @@ public class Interfaz extends JFrame implements ActionListener {
         return lblTotalUsuarios;
     }
 
-    public JTextArea getTexto_suspendidos() {
-        return texto_suspendidos;
-    }
 
     public JLabel getTotal_suspendidos() {
         return lblTotalSuspendidos;

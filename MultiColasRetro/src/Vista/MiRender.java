@@ -19,29 +19,27 @@ public class MiRender extends DefaultTableCellRenderer {
                     cell.setForeground(new java.awt.Color(22, 160, 133));
                     break;
                 case "X1":
-                    cell.setBackground(Color.YELLOW);
-                    cell.setForeground(Color.YELLOW);
+                    cell.setBackground(new java.awt.Color(175, 122, 197));
+                    cell.setForeground(new java.awt.Color(175, 122, 197));
                     break;
                 case "X2":
-                    cell.setBackground(Color.RED);
-                    cell.setForeground(Color.red);
+                    cell.setBackground(new java.awt.Color(240, 178, 122));
+                    cell.setForeground(new java.awt.Color(240, 178, 122));
                     break;
                 case "E":
-                    cell.setBackground(Color.green);
-                    cell.setForeground(Color.green);
+                    cell.setBackground(new java.awt.Color(244, 208, 63));
+                    cell.setForeground(new java.awt.Color(244, 208, 63));
                     break;
                 case "B":
-                    cell.setBackground(Color.cyan);
-                    cell.setForeground(Color.cyan);
+                    cell.setBackground(new java.awt.Color(236, 112, 99));
+                    cell.setForeground(new java.awt.Color(236, 112, 99));
                     break;
                 case "S":
-                    cell.setBackground(Color.orange);
-                    cell.setForeground(Color.orange);
+                    cell.setBackground(new java.awt.Color(244, 208, 63));
+                    cell.setForeground(new java.awt.Color(244, 208, 63));
                     break;
                 default:
                     table.selectAll();
-                    cell.setBackground(Color.white);
-                    cell.setForeground(Color.black);
                     break;
             }
         }

@@ -12,19 +12,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Cristian
- */
 public class Srtf extends Thread {
 
     public Cola listos = new Cola();
     public Cola bloqueados = new Cola();
-
     public Cola atendidos = new Cola();
     public Cola suspendidos = new Cola();
+    public Cola atendidos_total = new Cola();
     public Fifo fifo;
-    public Cola atendidos_total;
+    
     public boolean agregar_proceso = false;
     public boolean encurso = true;
 
@@ -96,7 +92,7 @@ public class Srtf extends Thread {
 
                                     //--------------------------- Finalizar --------------------------
                                     if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
-                                        JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
+                                        //JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
                                         interfaz.getlblSemaforo().setBackground(Color.green);
                                         interfaz.getlblSemaforo().setText("Vacía");
                                         this.stop();
@@ -170,7 +166,7 @@ public class Srtf extends Thread {
                                         interfaz.getTiempo_cpu().setText(en_ejecucion.tiempo_cpu + "");
                                         /*sleep(2000);
                                          sleep(1000);*/
-                                        JOptionPane.showMessageDialog(null, "Finaliza proceso " + listos.p.sig.proceso);
+                                        //.showMessageDialog(null, "Finaliza proceso " + listos.p.sig.proceso);
                                         //---------------- Semáforo ---------------------------
                                         interfaz.getlblSemaforo().setBackground(Color.green);
                                         interfaz.getlblSemaforo().setText("Vacía");
@@ -184,13 +180,13 @@ public class Srtf extends Thread {
 
                                         //----------------------- Despachador ------------------------------------
                                         if (this.fifo.robin.getTotalNumNuevo() != 0) {
-                                            JOptionPane.showMessageDialog(null, "Entrará el proceso " + this.fifo.robin.listos.p.sig.proceso);
+                                            //JOptionPane.showMessageDialog(null, "Entrará el proceso " + this.fifo.robin.listos.p.sig.proceso);
                                         } else {
                                             if (this.getTotalNumNuevo() != 0) {
-                                                JOptionPane.showMessageDialog(null, "Entrará el proceso de Cola 2");
+                                                //JOptionPane.showMessageDialog(null, "Entrará el proceso de Cola 2");
                                             } else {
                                                 if (this.fifo.listos.p.sig.proceso != 0) {
-                                                    JOptionPane.showMessageDialog(null, "Entrará el proceso " + this.fifo.listos.p.sig.proceso);
+                                                    //JOptionPane.showMessageDialog(null, "Entrará el proceso " + this.fifo.listos.p.sig.proceso);
                                                 }
                                             }
                                         }
@@ -211,12 +207,12 @@ public class Srtf extends Thread {
                                     //sleep(1500);
                                     suspendidos.agregar(en_ejecucion);
                                     listos.eliminarNodo(en_ejecucion);
-                                    suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
+                                    //suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
                                     listos.imprimir(interfaz.getTexto_interactivos(), interfaz.getTotal_interactivos());
                                     //sleep(1500);
                                     listos.agregar(suspendidos.p.sig);
                                     suspendidos.eliminarNodo(suspendidos.p.sig);
-                                    suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
+                                    //suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
                                     listos.imprimir(interfaz.getTexto_interactivos(), interfaz.getTotal_interactivos());
                                     comprobarPrioridad();
                                 }
@@ -237,9 +233,9 @@ public class Srtf extends Thread {
                                     listos.imprimir();
                                     listos.imprimir(interfaz.getTexto_interactivos(), interfaz.getTotal_interactivos());
 
-                                    JOptionPane.showMessageDialog(null, "El proceso " + impr.proceso + " ha sido bloqueado.");
+                                    JOptionPane.showMessageDialog(null, "Proceso " + impr.proceso + " bloqueado.");
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "No se puede bloquear el proceso en este momento.");
+                                    //.showMessageDialog(null, "No se puede bloquear el proceso en este momento.");
                                 }
                                 bandera = false;
                             }
@@ -284,7 +280,7 @@ public class Srtf extends Thread {
 
                     //--------------------------- Finalizar --------------------------
                     if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
-                        JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
+                        //JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
                         interfaz.getlblSemaforo().setBackground(Color.green);
                         interfaz.getlblSemaforo().setText("Vacía");
                         this.stop();
@@ -340,6 +336,7 @@ public class Srtf extends Thread {
                             this.suspend();
                         }
                     } else if (this.fifo.robin.getTotalNumNuevo() == 0 && this.fifo.getTotalNumNuevo() == 0) {
+                        sleep(5000);
                         JOptionPane.showMessageDialog(null, "Ejecución Finalizada");
                         this.stop();
                     }
@@ -357,11 +354,7 @@ public class Srtf extends Thread {
     public boolean hayRecurso() {//verifica si existe el recurso correspondiente a ese proceso
         Random rnd = new Random();
         int x = rnd.nextInt(20);
-        if (x < 19) {
-            return true;
-        } else {
-            return false;
-        }
+        return x < 19;
     }
 
     public void agregarProceso() {//agrega un nuevo proceso en cualquier instante de tiempo
@@ -384,11 +377,7 @@ public class Srtf extends Thread {
     public boolean hayRecurso2() {//Determina si existe un recurso para ese proceso
         Random rnd = new Random();
         int x = rnd.nextInt(20);
-        if (x < 16) {
-            return true;
-        } else {
-            return false;
-        }
+        return x < 16;
     }
 
     public Nodo CompararTiempos(Nodo inicial) {
@@ -418,11 +407,7 @@ public class Srtf extends Thread {
         }
 
         actual = aux_inicial;
-        if (aux_actual == actual) {
-            return true;
-        } else {
-            return false;
-        }
+        return aux_actual == actual;
 
     }
 
@@ -462,16 +447,22 @@ public class Srtf extends Thread {
 
     public void diagramaGantt(Nodo actual, int estado, int transcurrido) {//actualiza diagrama de gantt desde la interfaz gráfica
         String fase;
-        if (estado == 1) {
-            fase = "X2";
-        } else if (estado == 2) {
-            fase = "E";
-        } else if (estado == 3) {
-            fase = "B";
-        } else if (estado == 4) {
-            fase = "S";
-        } else {
-            fase = null;
+        switch (estado) {
+            case 1:
+                fase = "X2";
+                break;
+            case 2:
+                fase = "E";
+                break;
+            case 3:
+                fase = "B";
+                break;
+            case 4:
+                fase = "S";
+                break;
+            default:
+                fase = null;
+                break;
         }
         interfaz.getTblGantt().setValueAt(fase, actual.proceso - 1, transcurrido);
         interfaz.getTblGantt().setDefaultRenderer(Object.class, new MiRender());
@@ -490,7 +481,7 @@ public class Srtf extends Thread {
         for (int i = 1; i <= fifo.listos.num; i++) {
             if (auxfifo.tiempo_en_espera > 20) {
                 //sleep(2500);
-                JOptionPane.showMessageDialog(null, "El proceso " + fifo.listos.p.sig.proceso + " por envejecimiento pasará a Cola 2");
+                //JOptionPane.showMessageDialog(null, "El proceso " + fifo.listos.p.sig.proceso + " por envejecimiento pasará a Cola 2");
                 fifo.listos.eliminarNodo(auxfifo);
                 listos.agregar(auxfifo);
                 listos.imprimir(interfaz.getTexto_interactivos(), interfaz.getTotal_interactivos());

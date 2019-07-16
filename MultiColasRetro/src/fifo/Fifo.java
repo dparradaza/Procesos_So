@@ -17,10 +17,12 @@ public class Fifo extends Thread {
     public Cola listos = new Cola();
     public Cola bloqueados = new Cola();
     public Cola atendidos = new Cola();
+    public Cola atendidos_total = new Cola();;
+    
     public boolean agregar_proceso = false;
     public boolean encurso = false;
     public RoundRobin robin;
-    public Cola atendidos_total;
+    
 
     public Interfaz interfaz;
     int conteo_tiempo = 0;//variable usada para graficar el primer diagrama de gantt
@@ -144,7 +146,7 @@ public class Fifo extends Thread {
                                     interfaz.getTiempo_cpu().setText(en_ejecucion.tiempo_cpu + "");
                                     /*sleep(2000);
                                      sleep(1000);*/
-                                    JOptionPane.showMessageDialog(null, "Finaliza proceso " + listos.p.sig.proceso);
+                                    //JOptionPane.showMessageDialog(null, "Finaliza proceso " + listos.p.sig.proceso);
 
                                     //------------------ Semáforo -------------------------
                                     interfaz.getlblSemaforo().setBackground(Color.green);
@@ -159,13 +161,13 @@ public class Fifo extends Thread {
 
                                     //----------------------- Despachador ------------------------------------
                                     if (this.robin.getTotalNumNuevo() != 0) {
-                                        JOptionPane.showMessageDialog(null, "Entrara el proceso " + this.robin.listos.p.sig.proceso);
+                                        //JOptionPane.showMessageDialog(null, "Entrara el proceso " + this.robin.listos.p.sig.proceso);
                                     } else {
                                         if (this.robin.srtf.getTotalNumNuevo() != 0) {
-                                            JOptionPane.showMessageDialog(null, "Entrará el proceso de Cola 2");
+                                            //JOptionPane.showMessageDialog(null, "Entrará el proceso de Cola 2");
                                         } else {
                                             if (this.listos.p.sig.proceso != 0) {
-                                                JOptionPane.showMessageDialog(null, "Entrará el proceso " + this.listos.p.sig.proceso);
+                                                //JOptionPane.showMessageDialog(null, "Entrará el proceso " + this.listos.p.sig.proceso);
                                             }
                                         }
                                     }
@@ -197,9 +199,9 @@ public class Fifo extends Thread {
                                     listos.imprimir(interfaz.getTexto_usuarios(), interfaz.getTotal_usuarios());
                                     this.agregarProceso();
 
-                                    JOptionPane.showMessageDialog(null, "El proceso " + impr.proceso + " ha sido bloqueado.");
+                                    JOptionPane.showMessageDialog(null, "Proceso" + impr.proceso + " bloqueado.");
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "No se puede bloquear el proceso en este momento.");
+                                    //JOptionPane.showMessageDialog(null, "No se puede bloquear el proceso en este momento.");
                                 }
                                 bandera = false;
                             }
@@ -245,7 +247,7 @@ public class Fifo extends Thread {
 
                     //--------------------------- Finalizar --------------------------
                     if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
-                        JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
+                        //JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
                         interfaz.getlblSemaforo().setBackground(Color.green);
                         interfaz.getlblSemaforo().setText("Vacía");
                         this.stop();
@@ -298,7 +300,8 @@ public class Fifo extends Thread {
                             this.suspend();
                         }
                     } else if (this.robin.getTotalNumNuevo() == 0 && this.robin.srtf.getTotalNumNuevo() == 0) {
-                        JOptionPane.showMessageDialog(null, "Ejecución Finalizada");
+                        sleep(5000);
+                        //JOptionPane.showMessageDialog(null, "Ejecución Finalizada");
                     }
                     this.stop();
                 }

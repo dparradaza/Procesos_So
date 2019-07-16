@@ -1,10 +1,7 @@
 package roundRobin;
 
-import java.util.Random;
-
 public class Nodo {
 
-    Random rnd = new Random();
     public int proceso;//numero del proceso
     public int tiempo_estimado;//quantum en cpu
     public Nodo sig;//apuntador del nodo

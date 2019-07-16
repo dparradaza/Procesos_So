@@ -6,7 +6,7 @@ import javax.swing.JTextArea;
 
 public class Cola {
 
-    public int i, num, t_proceso, primerProceso = 1;
+    public int i, num = 0, t_proceso = 0, primerProceso = 1;
     public Nodo nuevo, cab, p, aux;
 
     public void nuevo() {//crea la cola
@@ -89,7 +89,7 @@ public class Cola {
 
         while (impr != fifo.p) {//se repite hasta encontrar el ultimo nodo
             txt = "     ---------------------- --------------- ---------------------- ---------------\n"
-                    + "    | No.PROCESO | RÁFAGA |  EJECUTADO  | ESPERA \n"
+                    + "    | PROCESO | RÁFAGA |  EJECUTADO  | ESPERA \n"
                     + "     ---------------------- --------------- ---------------------- ---------------\n";
             if (impr.tiempo_cpu < 10) { //se valida esto para no dañar la tabla q se muestra
                 txt = txt + "    |              "
@@ -109,7 +109,7 @@ public class Cola {
         impr2 = srtf.p.sig;
         while (impr2 != srtf.p) {//se repite hasta encontrar el ultimo nodo
             txt = "     ---------------------- --------------- ---------------------- ---------------\n"
-                    + "    | No.PROCESO | RÁFAGA |  EJECUTADO  | ESPERA \n"
+                    + "    | PROCESO | RÁFAGA |  EJECUTADO  | ESPERA \n"
                     + "     ---------------------- --------------- ---------------------- ---------------\n";
             if (impr2.tiempo_cpu < 10) { //se valida esto para no dañar la tabla q se muestra
                 txt = txt + "    |              "
@@ -129,7 +129,7 @@ public class Cola {
         impr3 = round.p.sig;
         while (impr3 != round.p) {//se repite hasta encontrar el ultimo nodo
             txt = "     ---------------------- --------------- ---------------------- ---------------\n"
-                    + "    | No.PROCESO | RÁFAGA |  EJECUTADO  | ESPERA \n"
+                    + "    | PROCESO | RÁFAGA |  EJECUTADO  | ESPERA \n"
                     + "     ---------------------- --------------- ---------------------- ---------------\n";
             if (impr3.tiempo_cpu < 10) { //se valida esto para no dañar la tabla q se muestra
                 txt = txt + "    |              "
@@ -152,7 +152,6 @@ public class Cola {
     }
 
     public void imprimir() {//imprime la cola en consola
-
         Nodo impr;
         impr = p.sig;//asignar direccion del primer nodo que sigue a la cpu
         while (impr != p) {//se repiteNo proceso:  "+ hasta encontrar el ultimo nodo
@@ -160,13 +159,7 @@ public class Cola {
         }
     }
 
-    /**
-     * Método para agregar un nodo extra al final de la cola
-     *
-     * @param time tiempo del proceso
-     * @param pro identificador del proceso
-     */
-    public void eliminarPrimero2() {
+     public void eliminarPrimero2() {
         Nodo auxx = p.sig;
         if (auxx.sig != null) {
             p.sig = auxx.sig;
@@ -192,17 +185,6 @@ public class Cola {
         nuevo.sig = p;
         cab = nuevo;
         num++;
-        //   System.out.println("agregado proceso num: "+pro);
-    }
-
-    public int tamaño() {//calcula tamaño de la cola
-        Nodo tam = this.p.sig;
-        int t = 0;
-        while (tam != this.p) {
-            t++;
-            tam = tam.sig;
-        }
-        return t;
     }
 
     public void eliminarNodo(Nodo eliminar) {//elimina un nodo en cualquier posición

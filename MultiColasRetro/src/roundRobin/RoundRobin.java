@@ -43,7 +43,8 @@ public class RoundRobin extends Thread {
     }
 
     @Override
-    public void run() {//atender los procesos
+    public void run() {
+        //atender los procesos
         //da un número aleatorio de acuerdo al promedio de los tiempos que se dan
         this.srtf.listos.imprimir(this.interfaz.getTexto_interactivos(), this.interfaz.getTotal_interactivos());
         this.srtf.fifo.listos.imprimir(this.interfaz.getTexto_usuarios(), this.interfaz.getTotal_usuarios());
@@ -71,7 +72,7 @@ public class RoundRobin extends Thread {
 
                             //--------------------------- Finalizar --------------------------
                             if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
-                                JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
+                                //JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
                                 interfaz.getlblSemaforo().setBackground(Color.green);
                                 interfaz.getlblSemaforo().setText("Vacía");
                                 this.stop();
@@ -142,14 +143,14 @@ public class RoundRobin extends Thread {
                                     //-----------------------------------------------------
 
                                     diagramaGantt(auxiliar, 4, Integer.parseInt(interfaz.getTiempo_real().getText()));
-                                    suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
+                                    //suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
                                     if (auxiliar.getTiempo_suspendido() == auxiliar.quantum_suspendido) {
                                         Random rnds = new Random();
                                         auxiliar.setQuantum_suspendido(auxiliar.quantum_suspendido /*- rnds.nextInt(auxiliar.quantum_suspendido - 1)*/);
                                         listos.agregar(auxiliar);
                                         suspendidos.eliminarNodo(auxiliar);
                                         suspendidos.imprimir();
-                                        suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
+                                        //suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
                                         listos.imprimir();
                                         listos.imprimir(interfaz.getTexto_sistema(), interfaz.getTotal_sistema());
                                     }
@@ -174,7 +175,7 @@ public class RoundRobin extends Thread {
                                 interfaz.getTiempo_cpu().setText(listos.p.sig.tiempo_cpu + "");
                                 /*sleep(3000);
                                  sleep(2000);*/
-                                JOptionPane.showMessageDialog(null, "Finaliza proceso " + listos.p.sig.proceso);
+                                //JOptionPane.showMessageDialog(null, "Finaliza proceso " + listos.p.sig.proceso);
 
                                 //---------------- Semáforo ---------------------------
                                 interfaz.getlblSemaforo().setBackground(Color.green);
@@ -189,13 +190,13 @@ public class RoundRobin extends Thread {
 
                                 //----------------------- Despachador ------------------------------------
                                 if (this.getTotalNumNuevo() != 0) {
-                                    JOptionPane.showMessageDialog(null, "Entrará el proceso " + listos.p.sig.proceso);
+                                    //JOptionPane.showMessageDialog(null, "Entrará el proceso " + listos.p.sig.proceso);
                                 } else {
                                     if (this.srtf.getTotalNumNuevo() != 0) {
-                                        JOptionPane.showMessageDialog(null, "Entrará el proceso de Cola 2");
+                                        //JOptionPane.showMessageDialog(null, "Entrará el proceso de Cola 2");
                                     } else {
                                         if (this.srtf.fifo.listos.p.sig.proceso != 0) {
-                                            JOptionPane.showMessageDialog(null, "Entrará el proceso " + this.srtf.fifo.listos.p.sig.proceso);
+                                            //JOptionPane.showMessageDialog(null, "Entrará el proceso " + this.srtf.fifo.listos.p.sig.proceso);
                                         }
                                     }
                                 }
@@ -225,7 +226,7 @@ public class RoundRobin extends Thread {
                                     listos.imprimir();
                                     listos.imprimir(interfaz.getTexto_sistema(), interfaz.getTotal_sistema());
                                     suspendidos.imprimir();
-                                    suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
+                                    //suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
                                     interfaz.getTiempo_cpu().setText("");
                                     interfaz.getProcesos_en_ejecucion().setText("");
                                     interfaz.getCpu_nuevo().setText("");
@@ -244,9 +245,9 @@ public class RoundRobin extends Thread {
                                     listos.imprimir();
                                     listos.imprimir(interfaz.getTexto_sistema(), interfaz.getTotal_sistema());
 
-                                    JOptionPane.showMessageDialog(null, "El proceso " + impr.proceso + " ha sido bloqueado.");
+                                    JOptionPane.showMessageDialog(null, "Proceso " + impr.proceso + " bloqueado.");
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "No se puede bloquear el proceso en este momento.");
+                                    //JOptionPane.showMessageDialog(null, "No se puede bloquear el proceso en este momento.");
                                 }
                                 bandera = false;
                             }
@@ -294,7 +295,7 @@ public class RoundRobin extends Thread {
 
                     //--------------------------- Finalizar --------------------------
                     if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
-                        JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
+                        //JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
                         interfaz.getlblSemaforo().setBackground(Color.green);
                         interfaz.getlblSemaforo().setText("Vacía");
                         this.stop();
@@ -348,7 +349,7 @@ public class RoundRobin extends Thread {
                             //-----------------------------------------------------
 
                             diagramaGantt(auxiliar, 4, Integer.parseInt(interfaz.getTiempo_real().getText()));
-                            suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
+                            //suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
                             if (auxiliar.getTiempo_suspendido() == auxiliar.quantum_suspendido) {
                                 Random rnds = new Random();
                                 /*sleep(1000);
@@ -357,7 +358,7 @@ public class RoundRobin extends Thread {
                                 listos.agregar(auxiliar);
                                 suspendidos.eliminarNodo(auxiliar);
                                 suspendidos.imprimir();
-                                suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
+                                //suspendidos.imprimir(interfaz.getTexto_suspendidos(), interfaz.getTotal_suspendidos());
                                 listos.imprimir();
                                 listos.imprimir(interfaz.getTexto_sistema(), interfaz.getTotal_sistema());
                             }
@@ -367,7 +368,8 @@ public class RoundRobin extends Thread {
                 }
                 if ((listos.p == listos.p.sig) && (bloqueados.p == bloqueados.p.sig) && (suspendidos.p == suspendidos.p.sig)) {
                     if (this.srtf.getTotalNumNuevo() == 0 && this.srtf.fifo.getTotalNumNuevo() == 0) {
-                        JOptionPane.showMessageDialog(null, "Ejecución Finalizada");
+                        sleep(5000);
+                        //JOptionPane.showMessageDialog(null, "Ejecución Finalizada");
                         this.stop();
                     } else if (this.srtf.getTotalNumNuevo() != 0) {
                         this.srtf.resume();
@@ -394,7 +396,6 @@ public class RoundRobin extends Thread {
     }
 
     public void agregarProceso() {//agrega un nuevo proceso en cualquier instante de tiempo
-        System.out.print(agregar_proceso);
         if (agregar_proceso == true) {
             int nuevo_num = getTotalNum() + srtf.getTotalNum() + srtf.fifo.getTotalNum() + 1;
             agregar_proceso = false;
