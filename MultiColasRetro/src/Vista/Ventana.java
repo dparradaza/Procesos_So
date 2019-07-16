@@ -9,7 +9,7 @@ import javax.swing.*;
 import roundRobin.RoundRobin;
 import srtf.Srtf;
 
-public class Interfaz extends JFrame implements ActionListener {
+public class Ventana extends JFrame implements ActionListener {
 
     private JButton btnAgregaFIFO, btnAgregaRR, btnAgregaSFJ, btnBloqFIFO, btnBloqRR, btnBloqSJF, btnIniciar;
     private JLabel lblIotalInteractivos, lblNumRafEje, lblNumRafTotal,
@@ -17,7 +17,8 @@ public class Interfaz extends JFrame implements ActionListener {
             lblQuantum, lblRafEje, lblRafTot, lblSemaforo, lblSuspendido,
             lblTiempoReal, lblTotFinal, lblTotalBloqueados, lblTotalCola1,
             lblTotalCola2, lblTotalCola3, lblTotalSistema, lblTotalSuspendidos,
-            lblTotalUsuarios, lblTranscurrido, lblTitulo, lblTituloAtendidos, lblTituloBloqueados, lblTituloRR, lblTituloSJF, lblTituloFIFO;
+            lblTotalUsuarios, lblTranscurrido, lblTitulo, lblTituloAtendidos, 
+            lblTituloBloqueados, lblTituloRR, lblTituloSJF, lblTituloFIFO;
     private JPanel panVentana, panEjecucion;
     private JScrollPane scpBloqueados, scpFIFO, scpFinalizados, scpGantt, scpRoundRobin, scpSFJ;
     private JTable tblGantt;
@@ -30,7 +31,7 @@ public class Interfaz extends JFrame implements ActionListener {
     public Srtf srtf = new Srtf(this, fifo);
     public RoundRobin round_robin = new RoundRobin(this, srtf);
 
-    public Interfaz() {
+    public Ventana() {
         inicializar();
         componentes();
         dibujaGantt();
@@ -160,13 +161,13 @@ public class Interfaz extends JFrame implements ActionListener {
         btnAgregaFIFO = new JButton("\u2713");
         btnAgregaFIFO.addActionListener(this);
 
-        btnBloqRR = new JButton("\u2715");
+        btnBloqRR = new JButton("\u25a0");
         btnBloqRR.addActionListener(this);
 
-        btnBloqSJF = new JButton("\u2715");
+        btnBloqSJF = new JButton("\u25a0");
         btnBloqSJF.addActionListener(this);
 
-        btnBloqFIFO = new JButton("\u2715");
+        btnBloqFIFO = new JButton("\u25a0");
         btnBloqFIFO.addActionListener(this);
 
     }
@@ -296,8 +297,9 @@ public class Interfaz extends JFrame implements ActionListener {
 
         lblTotalUsuarios.setText("0");
 
-        lblSemaforo.setBackground(new java.awt.Color(0, 204, 0));
+        lblSemaforo.setBackground(new java.awt.Color(34, 153, 84));
         lblSemaforo.setHorizontalAlignment(SwingConstants.CENTER);
+        lblSemaforo.setFont(new Font("", 1, 25));
         lblSemaforo.setBorder(BorderFactory.createTitledBorder(""));
 
         lblTitulo.setFont(fuente1);

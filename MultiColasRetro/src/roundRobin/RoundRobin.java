@@ -1,7 +1,7 @@
 package roundRobin;
 
-import Vista.Interfaz;
-import Vista.MiRender;
+import Vista.Ventana;
+import Vista.EsquemaGantt;
 import java.awt.Color;
 import static java.lang.Thread.sleep;
 import java.util.Random;
@@ -19,7 +19,7 @@ public class RoundRobin extends Thread {
     public Cola atendidos_total = new Cola();
     public Srtf srtf;
 
-    public Interfaz interfaz;
+    public Ventana interfaz;
     int conteo_tiempo = 0;//variable usada para graficar el primer diagrama de gantt    
     public boolean agregar_proceso = false;
     public boolean encurso = false;
@@ -29,7 +29,7 @@ public class RoundRobin extends Thread {
 
     public boolean bandera = false;
 
-    public RoundRobin(Interfaz interfaz, Srtf srtf) {
+    public RoundRobin(Ventana interfaz, Srtf srtf) {
         this.interfaz = interfaz;
         this.srtf = srtf;
         listos.nuevo();//crea la lista
@@ -73,8 +73,8 @@ public class RoundRobin extends Thread {
                             //--------------------------- Finalizar --------------------------
                             if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
                                 //JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
-                                interfaz.getlblSemaforo().setBackground(Color.green);
-                                interfaz.getlblSemaforo().setText("Vacía");
+                                interfaz.getlblSemaforo().setBackground(new java.awt.Color(34, 153, 84));
+                                interfaz.getlblSemaforo().setText("\u231b");
                                 this.stop();
                                 this.srtf.stop();
                                 this.srtf.fifo.stop();
@@ -107,8 +107,8 @@ public class RoundRobin extends Thread {
                                     auxiliar_b.tiempo_en_espera = auxiliar_b.tiempo_en_espera + 1;
 
                                     //---------------- Semáforo ---------------------------
-                                    interfaz.getlblSemaforo().setBackground(Color.green);
-                                    interfaz.getlblSemaforo().setText("Vacía");
+                                    interfaz.getlblSemaforo().setBackground(new java.awt.Color(34, 153, 84));
+                                    interfaz.getlblSemaforo().setText("\u231b");
                                     //-----------------------------------------------------
 
                                     diagramaGantt(auxiliar_b, 3, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -138,8 +138,8 @@ public class RoundRobin extends Thread {
                                     auxiliar.tiempo_en_espera = auxiliar.tiempo_en_espera + 1;
 
                                     //---------------- Semáforo ---------------------------
-                                    interfaz.getlblSemaforo().setBackground(Color.green);
-                                    interfaz.getlblSemaforo().setText("Vacía");
+                                    interfaz.getlblSemaforo().setBackground(new java.awt.Color(34, 153, 84));
+                                    interfaz.getlblSemaforo().setText("\u231b");
                                     //-----------------------------------------------------
 
                                     diagramaGantt(auxiliar, 4, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -160,8 +160,8 @@ public class RoundRobin extends Thread {
 
                             }
                             //---------------------- Semáforo -------------------------------------
-                            interfaz.getlblSemaforo().setBackground(Color.red);
-                            interfaz.getlblSemaforo().setText("En uso");
+                            interfaz.getlblSemaforo().setBackground(new Color(231, 76, 60));
+                            interfaz.getlblSemaforo().setText("\u2205");
                             //---------------------------------------------------------------------
 
                             diagramaGantt(listos.p.sig, 1, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -178,8 +178,8 @@ public class RoundRobin extends Thread {
                                 //JOptionPane.showMessageDialog(null, "Finaliza proceso " + listos.p.sig.proceso);
 
                                 //---------------- Semáforo ---------------------------
-                                interfaz.getlblSemaforo().setBackground(Color.green);
-                                interfaz.getlblSemaforo().setText("Vacía");
+                                interfaz.getlblSemaforo().setBackground(new java.awt.Color(34, 153, 84));
+                                interfaz.getlblSemaforo().setText("\u231b");
                                 //-----------------------------------------------------
 
                                 actualizarAtendidos(listos.p.sig);
@@ -296,8 +296,8 @@ public class RoundRobin extends Thread {
                     //--------------------------- Finalizar --------------------------
                     if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
                         //JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
-                        interfaz.getlblSemaforo().setBackground(Color.green);
-                        interfaz.getlblSemaforo().setText("Vacía");
+                        interfaz.getlblSemaforo().setBackground(new java.awt.Color(34, 153, 84));
+                        interfaz.getlblSemaforo().setText("\u231b");
                         this.stop();
                         this.srtf.stop();
                         this.srtf.fifo.stop();
@@ -313,8 +313,8 @@ public class RoundRobin extends Thread {
                             auxiliar_b.tiempo_en_espera = auxiliar_b.tiempo_en_espera + 1;
 
                             //---------------- Semáforo ---------------------------
-                            interfaz.getlblSemaforo().setBackground(Color.green);
-                            interfaz.getlblSemaforo().setText("Vacía");
+                            interfaz.getlblSemaforo().setBackground(new java.awt.Color(34, 153, 84));
+                            interfaz.getlblSemaforo().setText("\u231b");
                             //-----------------------------------------------------
 
                             diagramaGantt(auxiliar_b, 3, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -344,8 +344,8 @@ public class RoundRobin extends Thread {
                             auxiliar.tiempo_en_espera = auxiliar.tiempo_en_espera + 1;
 
                             //---------------- Semáforo ---------------------------
-                            interfaz.getlblSemaforo().setBackground(Color.green);
-                            interfaz.getlblSemaforo().setText("Vacía");
+                            interfaz.getlblSemaforo().setBackground(new java.awt.Color(34, 153, 84));
+                            interfaz.getlblSemaforo().setText("\u231b");
                             //-----------------------------------------------------
 
                             diagramaGantt(auxiliar, 4, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -369,7 +369,7 @@ public class RoundRobin extends Thread {
                 if ((listos.p == listos.p.sig) && (bloqueados.p == bloqueados.p.sig) && (suspendidos.p == suspendidos.p.sig)) {
                     if (this.srtf.getTotalNumNuevo() == 0 && this.srtf.fifo.getTotalNumNuevo() == 0) {
                         sleep(5000);
-                        //JOptionPane.showMessageDialog(null, "Ejecución Finalizada");
+                        JOptionPane.showMessageDialog(null, "Ejecución Finalizada");
                         this.stop();
                     } else if (this.srtf.getTotalNumNuevo() != 0) {
                         this.srtf.resume();
@@ -459,7 +459,7 @@ public class RoundRobin extends Thread {
                 break;
         }
         interfaz.getTblGantt().setValueAt(fase, actual.proceso - 1, transcurrido);
-        interfaz.getTblGantt().setDefaultRenderer(Object.class, new MiRender());
+        interfaz.getTblGantt().setDefaultRenderer(Object.class, new EsquemaGantt());
         interfaz.getTblGantt().setValueAt(actual.tiempo_en_espera, actual.proceso - 1, 98);
         interfaz.getTblGantt().setValueAt(actual.tiempo_en_espera + actual.tiempo_cpu, actual.proceso - 1, 99);
     }

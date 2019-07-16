@@ -1,7 +1,7 @@
 package main;
 
 
-import Vista.Interfaz;
+import Vista.Ventana;
 
 public class launcher {
 
@@ -10,7 +10,7 @@ public class launcher {
      */
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(() -> {
-            new Interfaz().setVisible(true);
+            new Ventana().setVisible(true);
         });
     }
 }
