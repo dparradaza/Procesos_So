@@ -15,8 +15,8 @@ public class MiRender extends DefaultTableCellRenderer {
             String valor = (String) value;
             switch (valor) {
                 case "X":
-                    cell.setBackground(Color.MAGENTA);
-                    cell.setForeground(Color.magenta);
+                    cell.setBackground(new java.awt.Color(22, 160, 133));
+                    cell.setForeground(new java.awt.Color(22, 160, 133));
                     break;
                 case "X1":
                     cell.setBackground(Color.YELLOW);

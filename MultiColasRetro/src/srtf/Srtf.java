@@ -97,8 +97,8 @@ public class Srtf extends Thread {
                                     //--------------------------- Finalizar --------------------------
                                     if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
                                         JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
-                                        interfaz.getjLabel21().setBackground(Color.green);
-                                        interfaz.getjLabel21().setText("Vacía");
+                                        interfaz.getlblSemaforo().setBackground(Color.green);
+                                        interfaz.getlblSemaforo().setText("Vacía");
                                         this.stop();
                                         this.fifo.stop();
                                         this.fifo.robin.stop();
@@ -133,8 +133,8 @@ public class Srtf extends Thread {
                                             auxiliar_b.tiempo_en_espera = auxiliar_b.tiempo_en_espera + 1;
 
                                             //---------------- Semáforo ---------------------------
-                                            interfaz.getjLabel21().setBackground(Color.green);
-                                            interfaz.getjLabel21().setText("Vacía");
+                                            interfaz.getlblSemaforo().setBackground(Color.green);
+                                            interfaz.getlblSemaforo().setText("Vacía");
                                             //-----------------------------------------------------
 
                                             diagramaGantt(auxiliar_b, 3, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -159,8 +159,8 @@ public class Srtf extends Thread {
                                     fifo.robin.aumentarListos();
 
                                     //---------------- Semáforo ---------------------------
-                                    interfaz.getjLabel21().setBackground(Color.red);
-                                    interfaz.getjLabel21().setText("En uso");
+                                    interfaz.getlblSemaforo().setBackground(Color.red);
+                                    interfaz.getlblSemaforo().setText("En uso");
                                     //-----------------------------------------------------
 
                                     diagramaGantt(en_ejecucion, 1, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -172,8 +172,8 @@ public class Srtf extends Thread {
                                          sleep(1000);*/
                                         JOptionPane.showMessageDialog(null, "Finaliza proceso " + listos.p.sig.proceso);
                                         //---------------- Semáforo ---------------------------
-                                        interfaz.getjLabel21().setBackground(Color.green);
-                                        interfaz.getjLabel21().setText("Vacía");
+                                        interfaz.getlblSemaforo().setBackground(Color.green);
+                                        interfaz.getlblSemaforo().setText("Vacía");
                                         //-----------------------------------------------------
 
                                         actualizarAtendidos(en_ejecucion);
@@ -285,8 +285,8 @@ public class Srtf extends Thread {
                     //--------------------------- Finalizar --------------------------
                     if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
                         JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
-                        interfaz.getjLabel21().setBackground(Color.green);
-                        interfaz.getjLabel21().setText("Vacía");
+                        interfaz.getlblSemaforo().setBackground(Color.green);
+                        interfaz.getlblSemaforo().setText("Vacía");
                         this.stop();
                         this.fifo.stop();
                         this.fifo.robin.stop();
@@ -304,8 +304,8 @@ public class Srtf extends Thread {
                             auxiliar_b.tiempo_en_espera = auxiliar_b.tiempo_en_espera + 1;
 
                             //---------------- Semáforo ---------------------------
-                            interfaz.getjLabel21().setBackground(Color.green);
-                            interfaz.getjLabel21().setText("Vacía");
+                            interfaz.getlblSemaforo().setBackground(Color.green);
+                            interfaz.getlblSemaforo().setText("Vacía");
                             //-----------------------------------------------------
 
                             diagramaGantt(auxiliar_b, 3, Integer.parseInt(interfaz.getTiempo_real().getText()));

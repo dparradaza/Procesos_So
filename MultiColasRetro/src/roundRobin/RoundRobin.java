@@ -45,28 +45,22 @@ public class RoundRobin extends Thread {
     @Override
     public void run() {//atender los procesos
         //da un número aleatorio de acuerdo al promedio de los tiempos que se dan
-
         this.srtf.listos.imprimir(this.interfaz.getTexto_interactivos(), this.interfaz.getTotal_interactivos());
         this.srtf.fifo.listos.imprimir(this.interfaz.getTexto_usuarios(), this.interfaz.getTotal_usuarios());
-
         listos.imprimir();
         listos.imprimir(interfaz.getTexto_sistema(), interfaz.getTotal_sistema());
-
-        while (true)//comprueba que queden procesos por atender
-        {
+        while (true) {//comprueba que queden procesos por atender
             encurso = true;
-            this.srtf.suspend();
-            this.srtf.fifo.suspend();
+            srtf.suspend();
+            srtf.fifo.suspend();
             try {
                 //sleep(1000);
                 //this.agregarProceso();
                 if (listos.p.sig != listos.p) {
-
                     envejecimiento();
                     if (hayRecurso()) {//verifica que tenga recursos el proceso en curso para proceder a ejecutarlo
 
                         interfaz.getProcesos_en_ejecucion().setText(listos.p.sig.proceso + "");
-                        //sleep(2000);
                         int f = listos.p.sig.tiempo_estimado;
 
                         for (int i = 1; i <= f; i++) {
@@ -78,8 +72,8 @@ public class RoundRobin extends Thread {
                             //--------------------------- Finalizar --------------------------
                             if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
                                 JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
-                                interfaz.getjLabel21().setBackground(Color.green);
-                                interfaz.getjLabel21().setText("Vacía");
+                                interfaz.getlblSemaforo().setBackground(Color.green);
+                                interfaz.getlblSemaforo().setText("Vacía");
                                 this.stop();
                                 this.srtf.stop();
                                 this.srtf.fifo.stop();
@@ -112,8 +106,8 @@ public class RoundRobin extends Thread {
                                     auxiliar_b.tiempo_en_espera = auxiliar_b.tiempo_en_espera + 1;
 
                                     //---------------- Semáforo ---------------------------
-                                    interfaz.getjLabel21().setBackground(Color.green);
-                                    interfaz.getjLabel21().setText("Vacía");
+                                    interfaz.getlblSemaforo().setBackground(Color.green);
+                                    interfaz.getlblSemaforo().setText("Vacía");
                                     //-----------------------------------------------------
 
                                     diagramaGantt(auxiliar_b, 3, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -143,8 +137,8 @@ public class RoundRobin extends Thread {
                                     auxiliar.tiempo_en_espera = auxiliar.tiempo_en_espera + 1;
 
                                     //---------------- Semáforo ---------------------------
-                                    interfaz.getjLabel21().setBackground(Color.green);
-                                    interfaz.getjLabel21().setText("Vacía");
+                                    interfaz.getlblSemaforo().setBackground(Color.green);
+                                    interfaz.getlblSemaforo().setText("Vacía");
                                     //-----------------------------------------------------
 
                                     diagramaGantt(auxiliar, 4, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -165,8 +159,8 @@ public class RoundRobin extends Thread {
 
                             }
                             //---------------------- Semáforo -------------------------------------
-                            interfaz.getjLabel21().setBackground(Color.red);
-                            interfaz.getjLabel21().setText("En uso");
+                            interfaz.getlblSemaforo().setBackground(Color.red);
+                            interfaz.getlblSemaforo().setText("En uso");
                             //---------------------------------------------------------------------
 
                             diagramaGantt(listos.p.sig, 1, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -183,8 +177,8 @@ public class RoundRobin extends Thread {
                                 JOptionPane.showMessageDialog(null, "Finaliza proceso " + listos.p.sig.proceso);
 
                                 //---------------- Semáforo ---------------------------
-                                interfaz.getjLabel21().setBackground(Color.green);
-                                interfaz.getjLabel21().setText("Vacía");
+                                interfaz.getlblSemaforo().setBackground(Color.green);
+                                interfaz.getlblSemaforo().setText("Vacía");
                                 //-----------------------------------------------------
 
                                 actualizarAtendidos(listos.p.sig);
@@ -200,9 +194,9 @@ public class RoundRobin extends Thread {
                                     if (this.srtf.getTotalNumNuevo() != 0) {
                                         JOptionPane.showMessageDialog(null, "Entrará el proceso de Cola 2");
                                     } else {
-                                        if(this.srtf.fifo.listos.p.sig.proceso != 0){
+                                        if (this.srtf.fifo.listos.p.sig.proceso != 0) {
                                             JOptionPane.showMessageDialog(null, "Entrará el proceso " + this.srtf.fifo.listos.p.sig.proceso);
-                                        }                                        
+                                        }
                                     }
                                 }
                                 //------------------------------------------------------------------------
@@ -220,7 +214,7 @@ public class RoundRobin extends Thread {
                                      * (1 + rndt.nextInt(3)) + 1
                                      */
                                     );
-             //  tiempo_real.Asignar(listos.p.sig.tiempo_transcurrido);
+                                    //  tiempo_real.Asignar(listos.p.sig.tiempo_transcurrido);
 
                                     //  if(listos.p.sig.tiempo_cpu<=listos.p.sig.tiempo_estimado)nuevo_cpu=listos.p.sig.tiempo_cpu;
                                     //else nuevo_cpu=listos.p.sig.tiempo_cpu-listos.p.sig.tiempo_estimado;                                    
@@ -258,7 +252,6 @@ public class RoundRobin extends Thread {
                             }
 
                             //this.agregarProceso();
-
                             // -------------------- Llegan nuevos procesos de forma dinámica--------
 //                            nu = r.nextInt(30);
 //                            if (nu == 45) {
@@ -302,8 +295,8 @@ public class RoundRobin extends Thread {
                     //--------------------------- Finalizar --------------------------
                     if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
                         JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
-                        interfaz.getjLabel21().setBackground(Color.green);
-                        interfaz.getjLabel21().setText("Vacía");
+                        interfaz.getlblSemaforo().setBackground(Color.green);
+                        interfaz.getlblSemaforo().setText("Vacía");
                         this.stop();
                         this.srtf.stop();
                         this.srtf.fifo.stop();
@@ -319,8 +312,8 @@ public class RoundRobin extends Thread {
                             auxiliar_b.tiempo_en_espera = auxiliar_b.tiempo_en_espera + 1;
 
                             //---------------- Semáforo ---------------------------
-                            interfaz.getjLabel21().setBackground(Color.green);
-                            interfaz.getjLabel21().setText("Vacía");
+                            interfaz.getlblSemaforo().setBackground(Color.green);
+                            interfaz.getlblSemaforo().setText("Vacía");
                             //-----------------------------------------------------
 
                             diagramaGantt(auxiliar_b, 3, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -350,8 +343,8 @@ public class RoundRobin extends Thread {
                             auxiliar.tiempo_en_espera = auxiliar.tiempo_en_espera + 1;
 
                             //---------------- Semáforo ---------------------------
-                            interfaz.getjLabel21().setBackground(Color.green);
-                            interfaz.getjLabel21().setText("Vacía");
+                            interfaz.getlblSemaforo().setBackground(Color.green);
+                            interfaz.getlblSemaforo().setText("Vacía");
                             //-----------------------------------------------------
 
                             diagramaGantt(auxiliar, 4, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -397,11 +390,7 @@ public class RoundRobin extends Thread {
     public boolean hayRecurso() {//verifica si existe el recurso correspondiente a ese proceso
         Random rnd = new Random();
         int x = rnd.nextInt(20);
-        if (x < 19) {
-            return true;
-        } else {
-            return false;
-        }
+        return x < 19;
     }
 
     public void agregarProceso() {//agrega un nuevo proceso en cualquier instante de tiempo
@@ -430,19 +419,11 @@ public class RoundRobin extends Thread {
     public boolean hayRecurso2() {//Determina si existe un recurso para ese proceso
         Random rnd = new Random();
         int x = rnd.nextInt(20);
-        if (x < 15) {
-            return true;
-        } else {
-            return false;
-        }
+        return x < 15;
     }
 
-    public boolean cumpleQuantum(Nodo nodo) {//verifica si se ha terminado el tiempo de ejecución de un proceso
-        if (nodo.tiempo_final == nodo.tiempo_cpu) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean cumpleQuantum(Nodo nodo) { //verifica si se ha terminado el tiempo de ejecución de un proceso
+        return nodo.tiempo_final == nodo.tiempo_cpu;
     }
 
     public void aumentarListos() {
@@ -455,8 +436,9 @@ public class RoundRobin extends Thread {
             listos.imprimir(interfaz.getTexto_sistema(), interfaz.getTotal_sistema());
         }
     }
-
-    public void diagramaGantt(Nodo actual, int estado, int transcurrido) {//actualiza diagrama de gantt desde la interfaz gráfica
+    
+    //actualiza diagrama de gantt desde la interfaz gráfica
+    public void diagramaGantt(Nodo actual, int estado, int transcurrido) {
         String fase;
         switch (estado) {
             case 1:
@@ -487,7 +469,7 @@ public class RoundRobin extends Thread {
         for (int i = 1; i <= srtf.listos.num; i++) {
             if (auxsrtf.tiempo_en_espera > 30) {
                 //sleep(2500);                
-                JOptionPane.showMessageDialog(null, "El proceso " + auxsrtf.proceso + " por envejecimiento pasará a Cola 1");
+                //JOptionPane.showMessageDialog(null, "El proceso " + auxsrtf.proceso + " por envejecimiento pasará a Cola 1");
                 srtf.listos.eliminarNodo(auxsrtf);
                 listos.agregar(auxsrtf);
                 listos.imprimir(interfaz.getTexto_sistema(), interfaz.getTotal_sistema());

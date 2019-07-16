@@ -43,25 +43,64 @@ public class Interfaz extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnIniciar) {
             iniciar();
-        }
-        if (e.getSource() == btnAgregaRR) {
+        } else if (e.getSource() == btnAgregaRR) {
             agregaRR();
-        }
-        if (e.getSource() == btnAgregaSFJ) {
+        } else if (e.getSource() == btnAgregaSFJ) {
             agregaSFJ();
-        }
-        if (e.getSource() == btnAgregaFIFO) {
+        } else if (e.getSource() == btnAgregaFIFO) {
             agregaFIFO();
-        }
-        if (e.getSource() == btnBloqRR) {
+        } else if (e.getSource() == btnBloqRR) {
             bloqRR();
-        }
-        if (e.getSource() == btnBloqSJF) {
+        } else if (e.getSource() == btnBloqSJF) {
             bloqSFJ();
-        }
-        if (e.getSource() == btnBloqFIFO) {
+        } else if (e.getSource() == btnBloqFIFO) {
             bloqFIFO();
         }
+    }
+
+    private void iniciar() {
+        if (x == 0) {
+            lblSemaforo.setOpaque(true);//rellena de color el label
+            lblSemaforo.setForeground(Color.black);
+            btnIniciar.setEnabled(false);
+            fifo.setRobin(round_robin);
+            round_robin.start();
+            srtf.start();
+            srtf.fifo.start();
+        } else {
+            JOptionPane.showMessageDialog(null, "Imposible comenzar nuevamente");
+        }
+        x = x + 1;
+    }
+
+    private void agregaRR() {
+        JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola1");
+        round_robin.agregar_proceso = true;
+        round_robin.agregarProceso();
+    }
+
+    private void agregaFIFO() {
+        JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola3");
+        fifo.agregar_proceso = true;
+        fifo.agregarProceso();
+    }
+
+    private void agregaSFJ() {
+        JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola2");
+        srtf.agregar_proceso = true;
+        srtf.agregarProceso();
+    }
+
+    private void bloqRR() {
+        round_robin.bandera = true;
+    }
+
+    private void bloqSFJ() {
+        srtf.bandera = true;
+    }
+
+    private void bloqFIFO() {
+        fifo.bandera = true;
     }
 
     private void inicializar() {
@@ -116,12 +155,12 @@ public class Interfaz extends JFrame implements ActionListener {
 
         btnAgregaRR = new JButton("\u2713");
         btnAgregaRR.addActionListener(this);
-        
+
         btnAgregaSFJ = new JButton("\u2713");
         btnAgregaSFJ.addActionListener(this);
 
         btnAgregaFIFO = new JButton("\u2713");
-        btnAgregaFIFO.addActionListener(this);     
+        btnAgregaFIFO.addActionListener(this);
 
         btnBloqRR = new JButton("\u2715");
         btnBloqRR.addActionListener(this);
@@ -203,13 +242,13 @@ public class Interfaz extends JFrame implements ActionListener {
         panEjecucion.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblSuspendido.setFont(fuente);
-        lblSuspendido.setText("ProcesosSuspendidos:");
+        lblSuspendido.setText("P. Suspendidos:");
 
         lblTotalSuspendidos.setFont(fuente);
         lblTotalSuspendidos.setText("0");
 
         lblTranscurrido.setFont(fuente);
-        lblTranscurrido.setText("Tiempo Transcurrido:");
+        lblTranscurrido.setText("T. Transcurrido:");
 
         lblTiempoReal.setFont(fuente);
         lblTiempoReal.setText("0");
@@ -218,13 +257,13 @@ public class Interfaz extends JFrame implements ActionListener {
         lblTotalBloqueados.setText("0");
 
         lblPBloq.setFont(fuente);
-        lblPBloq.setText("Procesos Bloqueados:");
+        lblPBloq.setText("P. Bloqueados:");
 
         lblPEjecucion.setFont(fuente);
         lblPEjecucion.setText("0");
 
         lblProEjecucion.setFont(fuente);
-        lblProEjecucion.setText("Proceso en Ejecucion: ");
+        lblProEjecucion.setText("P. Ejecucion: ");
 
         lblQuantum.setFont(fuente);
         lblQuantum.setText("Quantum:   5");
@@ -238,11 +277,166 @@ public class Interfaz extends JFrame implements ActionListener {
         lblRafEje.setText("Ráfaga ejecutada:");
         lblRafEje.setFont(fuente);
 
-        lblNumTotFinal.setFont(fuente);
         lblNumTotFinal.setText("0");
-        lblNumRafTotal.setText("0");
-        lblNumRafEje.setText("0");
+        lblNumTotFinal.setFont(fuente);
 
+        lblNumRafTotal.setText("0");
+        lblNumTotFinal.setFont(fuente);
+
+        lblNumRafEje.setText("0");
+        lblNumTotFinal.setFont(fuente);
+
+        diseñoPanEjecucion();
+
+        lblTotalCola1.setText("Total Cola1: ");
+        lblTotalCola2.setText("Total Cola2: ");
+        lblTotalCola3.setText("Total Cola3: ");
+
+        lblTotalSistema.setText("0");
+
+        lblIotalInteractivos.setText("0");
+
+        lblTotalUsuarios.setText("0");
+
+        lblSemaforo.setBackground(new java.awt.Color(0, 204, 0));
+        lblSemaforo.setHorizontalAlignment(SwingConstants.CENTER);
+        lblSemaforo.setBorder(BorderFactory.createTitledBorder(""));
+
+        lblTitulo.setFont(fuente1);
+        lblTitulo.setText("Multicolas con Retroalimentacion");
+
+        lblTituloRR.setText("Round Robin (Magneta) ");
+
+        lblTituloSJF.setText("SJF (Rojo) ");
+
+        lblTituloFIFO.setText("FIFO (Amarillo)");
+
+        lblTituloAtendidos.setText("Atendidos");
+
+        lblTituloBloqueados.setText("Bloqueados");
+
+        scpBloqueados.setBackground(new java.awt.Color(0, 204, 204));
+
+        texto_bloqueados.setEditable(false);
+        texto_bloqueados.setColumns(20);
+        texto_bloqueados.setRows(5);
+        texto_bloqueados.setToolTipText("");
+        scpBloqueados.setViewportView(texto_bloqueados);
+
+        disenoPanVentana();
+        pack();
+    }
+
+    private void dibujaColas() {
+        scpRoundRobin.setBackground(new java.awt.Color(255, 0, 0));
+
+        txaRoundRobin.setEditable(false);
+        txaRoundRobin.setColumns(20);
+        txaRoundRobin.setRows(5);
+        txaRoundRobin.setToolTipText("");
+        scpRoundRobin.setViewportView(txaRoundRobin);
+
+        scpSFJ.setBackground(new java.awt.Color(255, 0, 0));
+
+        txaSJF.setEditable(false);
+        txaSJF.setColumns(20);
+        txaSJF.setRows(5);
+        txaSJF.setToolTipText("");
+        scpSFJ.setViewportView(txaSJF);
+
+        scpFIFO.setBackground(new java.awt.Color(255, 0, 0));
+
+        txaFIFO.setEditable(false);
+        txaFIFO.setColumns(20);
+        txaFIFO.setRows(5);
+        txaFIFO.setToolTipText("");
+        scpFIFO.setViewportView(txaFIFO);
+
+        scpFinalizados.setBackground(new java.awt.Color(0, 102, 102));
+        scpFinalizados.setAutoscrolls(true);
+        scpFinalizados.setEnabled(false);
+
+        texto_atendidos.setEditable(false);
+        texto_atendidos.setColumns(20);
+        texto_atendidos.setRows(5);
+        texto_atendidos.setToolTipText("");
+        scpFinalizados.setViewportView(texto_atendidos);
+    }
+
+    //GET and SET
+    public JLabel getlblSemaforo() {
+        return lblSemaforo;
+    }
+
+    public JTextArea getTexto_sistema() {
+        return txaRoundRobin;
+    }
+
+    public JTextArea getTexto_usuarios() {
+        return txaFIFO;
+    }
+
+    public JLabel getTotal_sistema() {
+        return lblTotalSistema;
+    }
+
+    public JLabel getTotal_usuarios() {
+        return lblTotalUsuarios;
+    }
+
+    public JTextArea getTexto_suspendidos() {
+        return texto_suspendidos;
+    }
+
+    public JLabel getTotal_suspendidos() {
+        return lblTotalSuspendidos;
+    }
+
+    public JTable getTblGantt() {
+        return tblGantt;
+    }
+
+    public JLabel getTiempo_real() {
+        return lblTiempoReal;
+    }
+
+    public JLabel getCpu_nuevo() {
+        return lblNumRafTotal;
+    }
+
+    public JLabel getProcesos_en_ejecucion() {
+        return lblPEjecucion;
+    }
+
+    public JTextArea getTexto_atendidos() {
+        return texto_atendidos;
+    }
+
+    public JTextArea getTexto_bloqueados() {
+        return texto_bloqueados;
+    }
+
+    public JTextArea getTexto_interactivos() {
+        return txaSJF;
+    }
+
+    public JLabel getTiempo_cpu() {
+        return lblNumRafEje;
+    }
+
+    public JLabel getTotal_atendidos() {
+        return lblNumTotFinal;
+    }
+
+    public JLabel getTotal_bloqueados() {
+        return lblTotalBloqueados;
+    }
+
+    public JLabel getTotal_interactivos() {
+        return lblIotalInteractivos;
+    }
+
+    private void diseñoPanEjecucion() {
         javax.swing.GroupLayout panEjecucionLayout = new javax.swing.GroupLayout(panEjecucion);
         panEjecucion.setLayout(panEjecucionLayout);
         panEjecucionLayout.setHorizontalGroup(
@@ -278,7 +472,8 @@ public class Interfaz extends JFrame implements ActionListener {
                                                                         .addComponent(lblPEjecucion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addComponent(lblTiempoReal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                         .addComponent(lblTotalBloqueados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(lblTotalSuspendidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                                        .addComponent(lblTotalSuspendidos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(lblNumTotFinal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEjecucionLayout.createSequentialGroup()
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addComponent(lblNumTotFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))))
@@ -321,42 +516,9 @@ public class Interfaz extends JFrame implements ActionListener {
                                 .addComponent(lblQuantum)
                                 .addGap(33, 33, 33))
         );
+    }
 
-        lblTotalCola1.setText("Total Cola1: ");
-        lblTotalCola2.setText("Total Cola2: ");
-        lblTotalCola3.setText("Total Cola3: ");
-
-        lblTotalSistema.setText("0");
-
-        lblIotalInteractivos.setText("0");
-
-        lblTotalUsuarios.setText("0");
-
-        lblSemaforo.setBackground(new java.awt.Color(0, 204, 0));
-        lblSemaforo.setHorizontalAlignment(SwingConstants.CENTER);
-        lblSemaforo.setBorder(BorderFactory.createTitledBorder(""));
-
-        lblTitulo.setFont(new java.awt.Font("Tahoma", 0, 14));
-        lblTitulo.setText("Multicolas con Retroalimentacion");
-
-        lblTituloRR.setText("Round Robin (Magneta) ");
-
-        lblTituloSJF.setText("SJF (Rojo) ");
-
-        lblTituloFIFO.setText("FIFO (Amarillo)");
-
-        lblTituloAtendidos.setText("Atendidos");
-
-        lblTituloBloqueados.setText("Bloqueados");
-
-        scpBloqueados.setBackground(new java.awt.Color(0, 204, 204));
-
-        texto_bloqueados.setEditable(false);
-        texto_bloqueados.setColumns(20);
-        texto_bloqueados.setRows(5);
-        texto_bloqueados.setToolTipText("");
-        scpBloqueados.setViewportView(texto_bloqueados);
-
+    private void disenoPanVentana() {
         javax.swing.GroupLayout panVentanaLayout = new javax.swing.GroupLayout(panVentana);
         panVentana.setLayout(panVentanaLayout);
         panVentanaLayout.setHorizontalGroup(
@@ -490,160 +652,5 @@ public class Interfaz extends JFrame implements ActionListener {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(panVentana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        pack();
-    }
-
-    private void dibujaColas() {
-        scpRoundRobin.setBackground(new java.awt.Color(255, 0, 0));
-
-        txaRoundRobin.setEditable(false);
-        txaRoundRobin.setColumns(20);
-        txaRoundRobin.setRows(5);
-        txaRoundRobin.setToolTipText("");
-        scpRoundRobin.setViewportView(txaRoundRobin);
-
-        scpSFJ.setBackground(new java.awt.Color(255, 0, 0));
-
-        txaSJF.setEditable(false);
-        txaSJF.setColumns(20);
-        txaSJF.setRows(5);
-        txaSJF.setToolTipText("");
-        scpSFJ.setViewportView(txaSJF);
-
-        scpFIFO.setBackground(new java.awt.Color(255, 0, 0));
-
-        txaFIFO.setEditable(false);
-        txaFIFO.setColumns(20);
-        txaFIFO.setRows(5);
-        txaFIFO.setToolTipText("");
-        scpFIFO.setViewportView(txaFIFO);
-
-        scpFinalizados.setBackground(new java.awt.Color(0, 102, 102));
-        scpFinalizados.setAutoscrolls(true);
-        scpFinalizados.setEnabled(false);
-
-        texto_atendidos.setEditable(false);
-        texto_atendidos.setColumns(20);
-        texto_atendidos.setRows(5);
-        texto_atendidos.setToolTipText("");
-        scpFinalizados.setViewportView(texto_atendidos);
-    }
-
-    private void iniciar() {
-        if (x == 0) {            
-            lblSemaforo.setOpaque(true);//rellena de color el label
-            lblSemaforo.setForeground(Color.black);
-            btnIniciar.setEnabled(false);
-            fifo.setRobin(round_robin);
-            round_robin.start();
-            srtf.start();
-            srtf.fifo.start();
-        } else {
-            JOptionPane.showMessageDialog(null, "Imposible comenzar nuevamente");
-        }
-        x = x + 1;
-    }
-
-    private void agregaRR() {
-        JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola1");
-        round_robin.agregar_proceso = true;
-        round_robin.agregarProceso();
-    }
-
-    private void agregaFIFO() {
-        JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola3");
-        fifo.agregar_proceso = true;
-        fifo.agregarProceso();
-    }
-
-    private void agregaSFJ() {
-        JOptionPane.showMessageDialog(null, "Se agrego un proceso a cola2");
-        srtf.agregar_proceso = true;
-        srtf.agregarProceso();
-    }
-
-    private void bloqRR() {
-        round_robin.bandera = true;
-    }
-
-    private void bloqSFJ() {
-        srtf.bandera = true;
-    }
-
-    private void bloqFIFO() {
-        fifo.bandera = true;
-    }
-
-    //GET and SET
-    public JLabel getjLabel21() {
-        return lblSemaforo;
-    }
-
-    public JTextArea getTexto_sistema() {
-        return txaRoundRobin;
-    }
-
-    public JTextArea getTexto_usuarios() {
-        return txaFIFO;
-    }
-
-    public JLabel getTotal_sistema() {
-        return lblTotalSistema;
-    }
-
-    public JLabel getTotal_usuarios() {
-        return lblTotalUsuarios;
-    }
-
-    public JTextArea getTexto_suspendidos() {
-        return texto_suspendidos;
-    }
-
-    public JLabel getTotal_suspendidos() {
-        return lblTotalSuspendidos;
-    }
-
-    public JTable getTblGantt() {
-        return tblGantt;
-    }
-
-    public JLabel getTiempo_real() {
-        return lblTiempoReal;
-    }
-
-    public JLabel getCpu_nuevo() {
-        return lblNumRafTotal;
-    }
-
-    public JLabel getProcesos_en_ejecucion() {
-        return lblPEjecucion;
-    }
-
-    public JTextArea getTexto_atendidos() {
-        return texto_atendidos;
-    }
-
-    public JTextArea getTexto_bloqueados() {
-        return texto_bloqueados;
-    }
-
-    public JTextArea getTexto_interactivos() {
-        return txaSJF;
-    }
-
-    public JLabel getTiempo_cpu() {
-        return lblNumRafEje;
-    }
-
-    public JLabel getTotal_atendidos() {
-        return lblNumTotFinal;
-    }
-
-    public JLabel getTotal_bloqueados() {
-        return lblTotalBloqueados;
-    }
-
-    public JLabel getTotal_interactivos() {
-        return lblIotalInteractivos;
     }
 }

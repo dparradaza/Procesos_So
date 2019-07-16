@@ -16,7 +16,6 @@ public class Fifo extends Thread {
 
     public Cola listos = new Cola();
     public Cola bloqueados = new Cola();
-
     public Cola atendidos = new Cola();
     public boolean agregar_proceso = false;
     public boolean encurso = false;
@@ -56,36 +55,30 @@ public class Fifo extends Thread {
         listos.imprimir();
         listos.imprimir(interfaz.getTexto_usuarios(), interfaz.getTotal_usuarios());
 
-        while (true)//comprueba que queden procesos por atender
-        {
+        while (true) {//comprueba que queden procesos por atender
             encurso = true;
             try {
-                //sleep(1000);
-                //this.agregarProceso();
                 robin.srtf.envejecimiento();
                 comprobarPrioridad();
                 if (listos.p.sig != listos.p) {
                     en_ejecucion = listos.p.sig;
                     if (hayRecurso()) {//verifica que tenga recursos el proceso en curso para proceder a ejecutarlo
                         interfaz.getProcesos_en_ejecucion().setText(en_ejecucion.proceso + "");
-                        //sleep(2000);
                         int f = en_ejecucion.tiempo_final;
-
                         for (int i = 1; i <= f; i++) {
-
                             robin.srtf.envejecimiento();
                             if (comprobarPrioridad()) {
                                 sleep(1000);
                                 interfaz.getTiempo_real().setText((Integer.parseInt(interfaz.getTiempo_real().getText()) + 1) + "");
-                                
+
                                 //--------------------------- Finalizar --------------------------
                                 if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
                                     JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
-                                    interfaz.getjLabel21().setBackground(Color.green);
-                                    interfaz.getjLabel21().setText("Vacía");
+                                    interfaz.getlblSemaforo().setBackground(Color.green);
+                                    interfaz.getlblSemaforo().setText("Vacía");
                                     this.stop();
-                                    this.robin.stop();
-                                    this.robin.srtf.stop();
+                                    robin.stop();
+                                    robin.srtf.stop();
                                 }
                                 //----------------------------------------------------
 
@@ -116,8 +109,8 @@ public class Fifo extends Thread {
                                         auxiliar_b.tiempo_en_espera = auxiliar_b.tiempo_en_espera + 1;
 
                                         //------------------ Semáforo -------------------------
-                                        interfaz.getjLabel21().setBackground(Color.green);
-                                        interfaz.getjLabel21().setText("Vacía");
+                                        interfaz.getlblSemaforo().setBackground(Color.green);
+                                        interfaz.getlblSemaforo().setText("Vacía");
                                         //-----------------------------------------------------
 
                                         diagramaGantt(auxiliar_b, 3, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -139,8 +132,8 @@ public class Fifo extends Thread {
                                 }
 
                                 //------------------ Semáforo -------------------------
-                                interfaz.getjLabel21().setBackground(Color.red);
-                                interfaz.getjLabel21().setText("En uso");
+                                interfaz.getlblSemaforo().setBackground(Color.red);
+                                interfaz.getlblSemaforo().setText("En uso");
                                 //-----------------------------------------------------
 
                                 diagramaGantt(en_ejecucion, 1, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -154,8 +147,8 @@ public class Fifo extends Thread {
                                     JOptionPane.showMessageDialog(null, "Finaliza proceso " + listos.p.sig.proceso);
 
                                     //------------------ Semáforo -------------------------
-                                    interfaz.getjLabel21().setBackground(Color.green);
-                                    interfaz.getjLabel21().setText("Vacía");
+                                    interfaz.getlblSemaforo().setBackground(Color.green);
+                                    interfaz.getlblSemaforo().setText("Vacía");
                                     //-----------------------------------------------------
 
                                     actualizarAtendidos(en_ejecucion);
@@ -192,7 +185,7 @@ public class Fifo extends Thread {
                             if (bandera) {
                                 Nodo impr;
                                 impr = en_ejecucion;
-                                if (i > 1 && i < impr.tiempo_final  && listos.p.sig.tiempo_cpu < 100 && (listos.p != null || bloqueados.p != null)) {
+                                if (i > 1 && i < impr.tiempo_final && listos.p.sig.tiempo_cpu < 100 && (listos.p != null || bloqueados.p != null)) {
                                     i = impr.tiempo_final;
                                     //System.out.print("\ntiempo final fifo_: " + impr.tiempo_final + " ->i: " + i);
 
@@ -253,8 +246,8 @@ public class Fifo extends Thread {
                     //--------------------------- Finalizar --------------------------
                     if (Integer.parseInt(interfaz.getTiempo_real().getText()) == 90) {
                         JOptionPane.showMessageDialog(null, "Tiempo Cumplido");
-                        interfaz.getjLabel21().setBackground(Color.green);
-                        interfaz.getjLabel21().setText("Vacía");
+                        interfaz.getlblSemaforo().setBackground(Color.green);
+                        interfaz.getlblSemaforo().setText("Vacía");
                         this.stop();
                         this.robin.stop();
                         this.robin.srtf.stop();
@@ -271,8 +264,8 @@ public class Fifo extends Thread {
                             auxiliar_b.tiempo_en_espera = auxiliar_b.tiempo_en_espera + 1;
 
                             //------------------ Semáforo -------------------------
-                            interfaz.getjLabel21().setBackground(Color.green);
-                            interfaz.getjLabel21().setText("Vacía");
+                            interfaz.getlblSemaforo().setBackground(Color.green);
+                            interfaz.getlblSemaforo().setText("Vacía");
                             //-----------------------------------------------------
 
                             diagramaGantt(auxiliar_b, 3, Integer.parseInt(interfaz.getTiempo_real().getText()));
@@ -344,11 +337,7 @@ public class Fifo extends Thread {
     public boolean hayRecurso2() {//Determina si existe un recurso para ese proceso
         Random rnd = new Random();
         int x = rnd.nextInt(20);
-        if (x < 16) {
-            return true;
-        } else {
-            return false;
-        }
+        return x < 16;
     }
 
     public Nodo CompararTiempos(Nodo inicial) {
